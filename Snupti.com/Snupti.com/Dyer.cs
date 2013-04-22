@@ -10,7 +10,7 @@ namespace Snupti.com
     {
         private double _powerConsumption;
         private double _capacity;
-
+        private Dimentions _size;
         /// <summary>
         /// Strømforbrug per tørrecyklus. 
         /// </summary>
@@ -30,6 +30,18 @@ namespace Snupti.com
                 {
                     _powerConsumption = value;
                 }
+            }
+        }
+
+        public Dimentions Size
+        {
+            get
+            {
+                return _size;
+            }
+            set
+            {
+                _size = value;
             }
         }
 
