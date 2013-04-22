@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Item
+    class Dyer
     {
         private string _name;
         private int _price;
@@ -17,7 +17,7 @@ namespace Snupti.com
             {
                 return _name;
             }
-            set
+            set 
             {
                 if (value == null)
                 {
@@ -35,7 +35,7 @@ namespace Snupti.com
         }
         public int Price
         {
-            get
+            get 
             {
                 return _price;
             }
