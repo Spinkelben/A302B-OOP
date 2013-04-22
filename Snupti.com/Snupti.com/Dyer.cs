@@ -6,51 +6,32 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Dyer
+    class Dyer : Item
     {
-        private string _name;
-        private int _price;
+        private double _powerConsumption;
+        private double _capacity;
 
-        public string Name
+        /// <summary>
+        /// Strømforbrug per tørrecyklus. 
+        /// </summary>
+        public double PowerConsumption
         {
             get
             {
-                return _name;
-            }
-            set 
-            {
-                if (value == null)
-                {
-                    throw new System.ArgumentNullException("Name");
-                }
-                else if (value == "")
-                {
-                    throw new System.ArgumentException("Name", "Name may not be an empty string");
-                }
-                else
-                {
-                    _name = value;
-                }
-            }
-        }
-        public int Price
-        {
-            get 
-            {
-                return _price;
+                return _powerConsumption;
             }
             set
             {
                 if (value < 0)
                 {
-                    throw new System.ArgumentOutOfRangeException("Price", "Price may not be a negative number");
+                    throw new System.ArgumentOutOfRangeException("PowerConsumption", "Powerconsumption cannot be less than zero");
                 }
                 else
                 {
-                    _price = value;
+                    _powerConsumption = value;
                 }
             }
-
         }
+
     }
 }
