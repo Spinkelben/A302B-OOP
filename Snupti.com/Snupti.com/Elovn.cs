@@ -12,6 +12,7 @@ namespace Snupti.com
         private double _powerConsumption;
         private double _capacity;
         private Dimensions _size;
+        private int _volume;
 
         public double PowerConsumption
         {
