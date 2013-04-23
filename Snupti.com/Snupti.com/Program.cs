@@ -13,7 +13,10 @@ namespace Snupti.com
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
             
-            
+            CondenserDryer Hej = new CondenserDryer();
+            Hej.PowerConsumption = 5.0;
+            Hej.Capacity = 5;
+            Console.WriteLine(Hej.GetEnergyRating());
             
             int a = 5;
             Console.WriteLine(a.IsBetween(0,4));

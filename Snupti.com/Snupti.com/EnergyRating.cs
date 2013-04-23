@@ -16,34 +16,19 @@ namespace Snupti.com
 
     static class EnergyTables
     {
+        static List<double> CondenserDryerThreshold = new List<double>() { 0.55, 0.64, 0.73, 0.82, 0.91, 1.00 };
+
         static public EnergyRating GetCondenserDryerRating(double relativePowerConsumption) 
         {
-            if (relativePowerConsumption <= 0.55) 
+            EnergyRating result = EnergyRating.G;
+            foreach (double c in CondenserDryerThreshold) 
             {
-                return EnergyRating.A;
+                if (relativePowerConsumption <= c)
+                {
+                    return result = (EnergyRating)CondenserDryerThreshold.IndexOf(c);
+                }
             }
-            if (relativePowerConsumption <= 0.64)
-            {
-                return EnergyRating.B;
-            }
-            if (relativePowerConsumption <= 0.73)
-            {
-                return EnergyRating.C;
-            }
-            if (relativePowerConsumption <= 0.82)
-            {
-                return EnergyRating.D;
-            }
-            if (relativePowerConsumption <= 0.91)
-            {
-                return EnergyRating.E;
-            }
-            if (relativePowerConsumption <= 1.00)
-            {
-                return EnergyRating.F;
-            }
-            return EnergyRating.G;
-
+            return result;
         }
     }
 }
