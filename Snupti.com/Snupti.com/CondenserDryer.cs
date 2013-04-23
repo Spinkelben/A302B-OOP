@@ -10,7 +10,7 @@ namespace Snupti.com
     {
         public override EnergyRating GetEnergyRating()
         {
-            return EnergyTables.GetCondenserDryerRating(0.5);
+            return EnergyTables.GetCondenserDryerRating(RelativePowerConsumption());
         }
     }
 }
