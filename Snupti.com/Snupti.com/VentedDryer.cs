@@ -6,46 +6,42 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class CondenserDryer : Dryer
+    class VentedDryer : Dryer
     {
         /// <summary>
-        /// Listen med grænseværdier for de forskellige energiklasser for denne type af hvidevare.
-        /// Første element i listen angiver grænseværdien for energiklasse A, anden værdi B osv.
+        /// Liste med grænseværdier for energiklasserne for en aftrækstørretumbler.
         /// </summary>
-        private static List<double> _condenserDryerThreshold = new List<double>() { 0.55, 0.64, 0.73, 0.82, 0.91, 1.00 };
+        private static List<double> _ventedDryerThreshold = new List<double>() { 0.51, 0.59, 0.67, 0.75, 0.83, 0.91 };
         /// <summary>
-        /// Har varmepumpe ja/nej?
+        /// Felt der husker om der følger en slange med tørretumbleren.
         /// </summary>
-        private bool _heatPump;
-
+        private bool _pipeIncluded;
         /// <summary>
-        /// Property der husker om tørretumbleren har varmepumpe.
+        /// Property til at sætte feltet det husker om der følger en slange med.
         /// </summary>
-        public bool HeatPump
+        public bool PipeIncluded
         {
             get
             {
-                return _heatPump;
+                return _pipeIncluded;
             }
-            set 
-            { 
-                _heatPump = value; 
+            set
+            {
+                _pipeIncluded = value;
             }
         }
-
-
         /// <summary>
-        /// Laver en ny instans af Kondenstørretumbleren.
+        /// Laver en ny instans af aftrækstørretumbleren.
         /// </summary>
         /// <param name="name">Modelnavn.</param>
         /// <param name="price">Pris i kr.</param>
-        public CondenserDryer(string name, int price)
-            : this(name, price, 1.0, 1, new Dimensions(), 1, 1)
+        public VentedDryer(string name, int price)
+            : this(name, price, 1.0, 1, new Dimensions(), 1, 1, true)
         {
             /*Empty*/
         }
         /// <summary>
-        /// Laver en ny instans af Kondenstørretumbleren.
+        /// Laver en ny instans af aftrækstørretumbleren.
         /// </summary>
         /// <param name="name">Modelnavn.</param>
         /// <param name="price">Pris i kr.</param>
@@ -54,9 +50,10 @@ namespace Snupti.com
         /// <param name="size">Dimentioner som Dimentions object.</param>
         /// <param name="noiseLevel">Støjniveau i dB.</param>
         /// <param name="dryingTime">Tørretid i minutter.</param>
-        public CondenserDryer(string name, int price, double powerConsumption, int capacity, Dimensions size,
-            int noiseLevel, int dryingTime) : this(name, price, powerConsumption, capacity, size.Length,
-            size.Width, size.Height, noiseLevel, dryingTime)
+        /// <param name="pipeIncluded">Hvorvidt der følger en slange med.</param>
+        public VentedDryer(string name, int price, double powerConsumption, int capacity, Dimensions size,
+            int noiseLevel, int dryingTime, bool pipeIncluded) : this(name, price, powerConsumption, capacity, size.Length,
+            size.Width, size.Height, noiseLevel, dryingTime, pipeIncluded)
         {
             /*Empty*/
         }
@@ -72,8 +69,9 @@ namespace Snupti.com
         /// <param name="height">Højde i mm.</param>
         /// <param name="noiseLevel">Støjniveau i dB.</param>
         /// <param name="dryingTime">Tørretid i minutter.</param>
-        public CondenserDryer(string name, int price, double powerConsumption, int capacity, int length,
-            int width, int height , int noiseLevel, int dryingTime)
+        /// <param name="pipeIncluded">Hvorvidt der følger en slange med.</param>
+        public VentedDryer(string name, int price, double powerConsumption, int capacity, int length,
+            int width, int height , int noiseLevel, int dryingTime, bool pipeIncluded)
         {
             Name = name;
             Price = price;
@@ -83,14 +81,15 @@ namespace Snupti.com
             Size = size;
             NoiseLevel = noiseLevel;
             DryingTime = dryingTime;
+            PipeIncluded = pipeIncluded;
         }
         /// <summary>
-        /// Override af GetEnergyRating() methoden, som beregner energiklassen for denne tørretumbler.
+        /// Beregner tørretumbleres energiklasse.
         /// </summary>
-        /// <returns>EnergyRating. Energiklassen for denne kondenstørretumbler.</returns>
+        /// <returns>Energiklassen som en energyRating enum.</returns>
         public override EnergyRating GetEnergyRating()
         {
-            return TumbleDryerEnergyRating(_condenserDryerThreshold);
+            return TumbleDryerEnergyRating(_ventedDryerThreshold);
         }
     }
 }

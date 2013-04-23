@@ -13,7 +13,7 @@ namespace Snupti.com
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
             
-            CondenserDryer Hej = new CondenserDryer("Smiele",5000);
+            VentLessDryer Hej = new VentLessDryer("Smiele",5000);
             Hej.PowerConsumption = 0.645;
             Hej.Capacity = 1;
            
