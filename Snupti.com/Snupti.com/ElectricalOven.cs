@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 namespace Snupti.com
 {
 
-    class Elovn : Item
+    class ElectricalOven : Item
     {
+        /// <summary>
+        /// Strømforbrug i kWh
+        /// </summary>
         private double _powerConsumption;
+
+        /// <summary>
+        /// Dimensioner i mm. - lændge, bredde & højde.
+        /// </summary>
         private Dimensions _size;
+        
+        /// <summary>
+        /// Volumen i liter
+        /// </summary>
         private int _volume;
 
+        /// <summary>
+        /// Strømforbrug i kWh
+        /// </summary>
         public double PowerConsumption
         {
             get
@@ -32,6 +46,9 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Dimensioner i mm. - lændge, bredde & højde.
+        /// </summary>
         public Dimensions Size
         {
             get
@@ -43,7 +60,10 @@ namespace Snupti.com
                 _size = value;
             }
         }
-        
+
+        /// <summary>
+        /// Volumen i liter
+        /// </summary>
         public int Volume
         {
             get

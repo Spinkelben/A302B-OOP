@@ -46,7 +46,7 @@
     <Compile Include="ExhaustHood.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Dryer.cs" />
-    <Compile Include="Elovn.cs" />
+    <Compile Include="ElectricalOven.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
