@@ -12,6 +12,7 @@ namespace Snupti.com
         private double _powerConsumption;
         //Kg
         private int _capacity;
+        //Størrelse
         private Dimentions _size;
         /// <summary>
         /// Strømforbrug per tørrecyklus. kWh.

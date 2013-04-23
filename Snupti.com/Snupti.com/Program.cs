@@ -12,7 +12,7 @@ namespace Snupti.com
         {
             Dimentions size = new Dimentions();
             Console.WriteLine(size);
-            Dyer hej = new Dyer();
+            Dryer hej = new Dryer();
 
             hej.PowerConsumption = 1;
             hej.Size = size;
