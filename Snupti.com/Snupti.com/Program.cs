@@ -10,7 +10,7 @@ namespace Snupti.com
     {
         static void Main(string[] args)
         {
-            Dimentions size = new Dimentions();
+            Dimensions size = new Dimensions();
             Console.WriteLine(size);
             Dryer hej = new Dryer();
 

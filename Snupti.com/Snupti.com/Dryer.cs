@@ -13,7 +13,7 @@ namespace Snupti.com
         //Kg
         private int _capacity;
         //Størrelse
-        private Dimentions _size;
+        private Dimensions _size;
         /// <summary>
         /// Strømforbrug per tørrecyklus. kWh.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Snupti.com
                 }
             }
         }
-        public Dimentions Size
+        public Dimensions Size
         {
             get
             {

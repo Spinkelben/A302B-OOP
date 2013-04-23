@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snupti.com
 {
 
-    class Elovn : item
+    class Elovn : Item
     {
         private double _powerConsumption;
         private double _capacity;
