@@ -130,10 +130,31 @@ namespace Snupti.com
         /// <summary>
         /// Returnerer en enum EnergyRating med den pågældende energiklasse.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Enum EnergiRating. Energi klasse</returns>
         public abstract EnergyRating GetEnergyRating();
-        
-        //    return EnergyTables.GetCondenserDryerRating(0.5);
-        
+        /// <summary>
+        /// Vigtig hjælpemetode, som beregner energiklassen for en hvilken som helst type
+        /// af tørretumbler.
+        /// </summary>
+        /// <param name="energyThreshold"></param>
+        /// <returns></returns>
+        protected EnergyRating TumbleDryerEnergyRating(List<double> energyThreshold)
+        {
+            //Sorterer grænseværdierne så de er i ordnet rækkefølge, hvilket de burde være i forvejen!
+            energyThreshold.Sort();
+            //Sætter resultatet til den ringeste energiklasse
+            EnergyRating result = EnergyRating.G;
+            //Løber grænseværdierne igennem, en for en. Hvis strømforbruget ligger under grænseværdien
+            //opdateres result enum, med den energiklasse der knytter sig til grænseværdien.
+            foreach (double Threshold in energyThreshold)
+            {
+                if (RelativePowerConsumption() <= Threshold)
+                {
+                    result = (EnergyRating)energyThreshold.IndexOf(Threshold);
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
