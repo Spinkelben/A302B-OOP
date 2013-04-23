@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Dyer : Item
+    class Dryer : Item
     {
+        //kWh per tørrecyklus
         private double _powerConsumption;
-        private double _capacity;
+        //Kg
+        private int _capacity;
 
         /// <summary>
-        /// Strømforbrug per tørrecyklus. 
+        /// Strømforbrug per tørrecyklus. kWh.
         /// </summary>
         public double PowerConsumption
         {
@@ -22,16 +24,37 @@ namespace Snupti.com
             }
             set
             {
-                if (value < 0)
-                {
-                    throw new System.ArgumentOutOfRangeException("PowerConsumption", "Powerconsumption cannot be less than zero");
-                }
-                else
+                if (value > 0)
                 {
                     _powerConsumption = value;
                 }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("PowerConsumption", "PowerConsumption skal være større end nul");
+                    
+                }
             }
         }
-
+        /// <summary>
+        /// Kapacitet i kg.
+        /// </summary>
+        public int Capacity
+        {
+            get
+            {
+                return _capacity;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _capacity = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("Capacity", "Capacity skal være større end 0");
+                }
+            }
+        }
     }
 }

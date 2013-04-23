@@ -25,7 +25,7 @@ namespace Snupti.com
                 }
                 else if (value == "")
                 {
-                    throw new System.ArgumentException("Name", "Name may not be an empty string");
+                    throw new System.ArgumentException("Name", "Name må ikke være en tom streng \"\".");
                 }
                 else
                 {
