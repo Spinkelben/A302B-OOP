@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CondenserDryer.cs" />
+    <Compile Include="EnergyRating.cs" />
     <Compile Include="ExhaustHood.cs" />
     <Compile Include="Dimensions.cs" />
     <Compile Include="Dryer.cs" />

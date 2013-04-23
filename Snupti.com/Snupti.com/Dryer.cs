@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Dryer : Item
+    abstract class Dryer : Item, IEnergyRating
     {
         /// <summary>
         /// kWh per tørrecyklus.
@@ -102,6 +102,9 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Tørretiden i minutter. Skal være større end eller lig 0.
+        /// </summary>
         public int DryingTime
         {
             get 
@@ -116,5 +119,21 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Returnerer det relative strømforbrug E, som bruges i energiklasseberegningerne.
+        /// </summary>
+        /// <returns>Double, det relative strømforbrug, E</returns>
+        public double RelativePowerConsumption()
+        {
+            return _powerConsumption / _capacity;
+        }
+        /// <summary>
+        /// Returnerer en enum EnergyRating med den pågældende energiklasse.
+        /// </summary>
+        /// <returns></returns>
+        public abstract EnergyRating GetEnergyRating();
+        
+        //    return EnergyTables.GetCondenserDryerRating(0.5);
+        
     }
 }

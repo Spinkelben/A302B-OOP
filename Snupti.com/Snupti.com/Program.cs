@@ -12,17 +12,15 @@ namespace Snupti.com
         {
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
-            Dryer hej = new Dryer();
             
-            hej.PowerConsumption = 1;
-            hej.Size = size;
+            
+            
             int a = 5;
-            Console.WriteLine(a.IsBetween(0,4
-));
+            Console.WriteLine(a.IsBetween(0,4));
 
-            Console.WriteLine(hej.Size.Width);
 
             Console.ReadLine();
+
         }
     }
 }
