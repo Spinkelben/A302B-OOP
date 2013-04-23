@@ -8,12 +8,26 @@ namespace Snupti.com
 {
     class Dryer : Item
     {
-        //kWh per tørrecyklus
+        /// <summary>
+        /// kWh per tørrecyklus.
+        /// </summary>
         private double _powerConsumption;
-        //Kg
+        /// <summary>
+        /// Kapacitet i kg.
+        /// </summary>
         private int _capacity;
-        //Størrelse
+        /// <summary>
+        /// Dimentioner i mm. Højde, bredde og længde.
+        /// </summary>
         private Dimensions _size;
+        /// <summary>
+        /// Støjniveau.
+        /// </summary>
+        private int _noise;
+        /// <summary>
+        /// Tørretid i minutter.
+        /// </summary>
+        private int _dryingTime;
         /// <summary>
         /// Strømforbrug per tørrecyklus. kWh.
         /// </summary>
@@ -57,6 +71,9 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Dimentioner i mm. Længde, bredde og højde.
+        /// </summary>
         public Dimensions Size
         {
             get
@@ -68,6 +85,36 @@ namespace Snupti.com
                 _size = value;
             }
         }
-
+        /// <summary>
+        /// Støjniveau i decibal. Gyldige værdier: 0-140.
+        /// </summary>
+        public int NoiseLevel
+        {
+            get
+            {
+                return _noise;
+            }
+            set 
+            {
+                if (value.IsBetween(0, 140))
+                {
+                    _noise = value;
+                }
+            }
+        }
+        public int DryingTime
+        {
+            get 
+            {
+                return _dryingTime;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    _dryingTime = value;
+                }
+            }
+        }
     }
 }
