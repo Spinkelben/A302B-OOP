@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Dyer.cs" />
     <Compile Include="ExhaustHood.cs" />
+=======
+    <Compile Include="Dimensions.cs" />
+    <Compile Include="Dryer.cs" />
+    <Compile Include="Elovn.cs" />
+>>>>>>> 9d94b69c30d330f6af8b4f0cadcf200573ad4bfa
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

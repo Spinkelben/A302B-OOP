@@ -10,6 +10,16 @@ namespace Snupti.com
     {
         static void Main(string[] args)
         {
+            Dimensions size = new Dimensions();
+            Console.WriteLine(size);
+            Dryer hej = new Dryer();
+
+            hej.PowerConsumption = 1;
+            hej.Size = size;
+
+            Console.WriteLine(hej.Size.Width);
+
+            Console.ReadLine();
         }
     }
 }
