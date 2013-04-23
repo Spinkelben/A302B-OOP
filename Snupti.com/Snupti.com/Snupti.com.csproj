@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KitchenItem.cs" />
     <Compile Include="CondenserDryer.cs" />
     <Compile Include="EnergyRating.cs" />
     <Compile Include="ExhaustHood.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Dryer.cs" />
     <Compile Include="ElectricalOven.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="NonKitchenItems.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
