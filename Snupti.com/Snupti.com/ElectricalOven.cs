@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snupti.com
 {
 
-    class ElectricalOven : Item
+    class ElectricalOven : KitchenItem, IEnergyRating
     {
         /// <summary>
         /// Strømforbrug i kWh
@@ -83,6 +83,42 @@ namespace Snupti.com
             }
         }
 
-
+        /// <summary>
+        /// Ikke færdig - ændres muligvis
+        /// </summary>
+        /// <returns></returns>
+        EnergyRating GetEnergyRating()
+        {
+            if (PowerConsumption < 0.6)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.A;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.A;
+                }
+                else
+                {
+                    return EnergyRating.A;
+                }
+            }
+            else if (PowerConsumption < 0.8)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.A;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.A;
+                }
+                else
+                {
+                    return EnergyRating.A;
+                }
+            }
+        }
     }
 }

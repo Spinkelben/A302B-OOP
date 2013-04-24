@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    abstract class NonKitchenItems : Item
+    abstract class NonKitchenItem : Item
     {
     
     }
