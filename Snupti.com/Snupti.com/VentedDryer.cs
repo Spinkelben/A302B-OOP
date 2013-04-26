@@ -9,7 +9,8 @@ namespace Snupti.com
     class VentedDryer : Dryer
     {
         /// <summary>
-        /// Liste med grænseværdier for energiklasserne for en aftrækstørretumbler.
+        /// Liste med grænseværdier for energiklasserne for en aftrækstørretumbler. Grænseværdierne skal have samme
+        /// index i listen som den energiklasses bogstav i enum EnergyRating, har.
         /// </summary>
         private static List<double> _ventedDryerThreshold = new List<double>() { 0.51, 0.59, 0.67, 0.75, 0.83, 0.91 };
         /// <summary>
@@ -90,6 +91,21 @@ namespace Snupti.com
         public override EnergyRating GetEnergyRating()
         {
             return TumbleDryerEnergyRating(_ventedDryerThreshold);
+        }
+        /// <summary>
+        /// Printer info om modellen i er læsbart format.
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
+        public override string ToString()
+        {
+            string result;
+            string dryerSpecs = base.ToString();
+            result = dryerSpecs;
+            result += "Type: Aftrækstørretumbler\n";
+            result += "Energiklasse: " + GetEnergyRating() +"\n";
+            result += "Slange Medfølger: " + PipeIncluded.ToString();
+
+            return result;
         }
     }
 }
