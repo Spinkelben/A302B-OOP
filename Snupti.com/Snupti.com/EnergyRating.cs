@@ -11,11 +11,11 @@ namespace Snupti.com
     /// </summary>
     interface IEnergyRating
     {
-        /// <summary>
-        /// Metode der beregner energiforbruget relativt til den enkelte maskines størrelse.
-        /// </summary>
-        /// <returns>Double, det relative energiforbrug</returns>
-        double RelativePowerConsumption();
+        ///// <summary>
+        ///// Metode der beregner energiforbruget relativt til den enkelte maskines størrelse.
+        ///// </summary>
+        ///// <returns>Double, det relative energiforbrug</returns>
+        //double RelativePowerConsumption();
         /// <summary>
         /// Metode der returnerer Energiklassen.
         /// </summary>
