@@ -8,20 +8,9 @@ namespace Snupti.com
 {
     class MicrowaveOven : ElectricalOven
     {
-        public MicrowaveOven(bool hasWarmAir) : base()
-        {
-            _hasWarmAir = hasWarmAir;
-        }
-
         public MicrowaveOven(bool hasGrill) : base()
         {
             _hasGrill = hasGrill;
-        }
-
-        private bool _hasWarmAir;
-        public bool HasWarmAir
-        {
-            get;
         }
 
         private bool _hasGrill;
