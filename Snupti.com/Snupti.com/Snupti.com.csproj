@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -41,11 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Dimentions.cs" />
-    <Compile Include="Dryer.cs" />
-    <Compile Include="ExhaustHood.cs" />
-=======
     <Compile Include="BuildInOven.cs" />
     <Compile Include="VentLessDryer.cs" />
     <Compile Include="KitchenItem.cs" />
@@ -54,7 +49,6 @@
     <Compile Include="Dimensions.cs" />
     <Compile Include="Dryer.cs" />
     <Compile Include="ElectricalOven.cs" />
->>>>>>> d8f91892a75fc168d63eac16b52141891d07ce5e
     <Compile Include="Item.cs" />
     <Compile Include="NonKitchenItem.cs" />
     <Compile Include="Program.cs" />

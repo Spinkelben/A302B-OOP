@@ -23,6 +23,38 @@ namespace Snupti.com
             Indbygget
         }
 
+        public bool Filter
+        {
+            get 
+            {
+                return _filter;
+            }
+            set
+            {
+                _filter = value;  
+            }
+        }
+
+        public int Noicelevel
+        {
+            get 
+            {
+                return _noiceLevel;
+            }
+            set
+            {
+                if (value.IsBetween(0, 140))
+                {
+                    _noiceLevel = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("NoiceLevel", "NoiceLevel er ikke en gyldig  værdi.");
+                }
+            }
+        }
+
+
         public string Type
         {
             get 
