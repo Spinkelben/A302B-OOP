@@ -87,7 +87,7 @@ namespace Snupti.com
         /// Ikke færdig - ændres muligvis
         /// </summary>
         /// <returns></returns>
-        EnergyRating GetEnergyRating()
+        public EnergyRating GetEnergyRating()
         {
             if (PowerConsumption < 0.6)
             {
@@ -119,6 +119,22 @@ namespace Snupti.com
                     return EnergyRating.A;
                 }
             }
+            //Jeg, Søren, har added denne else blok for at fjerne en fejl sådan at jeg kan koncentrerer 
+            // om den kode jeg arbejder på.
+            else
+            {
+                return EnergyRating.G;
+            }
+        }
+        public override KitchenItem.SmileySystem Smiley
+        {
+            get { throw new NotImplementedException(); }
+        }
+        public double RelativePowerConsumption()
+        {
+            throw new NotImplementedException();
         }
     }
+
+    
 }

@@ -16,7 +16,10 @@ namespace Snupti.com
         private bool _hasCleaningFunctionality;
         public bool HasCleaningFunctionality
         {
-            get;
+            get
+            {
+                return _hasCleaningFunctionality;
+            }
         }
 
         public override SmileySystem Smiley
