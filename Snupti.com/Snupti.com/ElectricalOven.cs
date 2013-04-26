@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snupti.com
 {
 
-    class ElectricalOven : KitchenItem, IEnergyRating
+    abstract class ElectricalOven : KitchenItem, IEnergyRating
     {
         /// <summary>
         /// Strømforbrug i kWh
