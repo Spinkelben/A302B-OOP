@@ -14,8 +14,9 @@ namespace Snupti.com
         private int _suctionCapacity;
         // ja og nej
         private bool _filter;
+        private int _noiceLevel;
 
-        public enum hoodtype
+        internal enum HoodType
         {
             Frithængt,
             Væghængt,
@@ -30,8 +31,13 @@ namespace Snupti.com
             }
             set 
             {
-                if ()
+                if (Enum.IsDefined(typeof(HoodType), value))
                 {
+                    _type = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("Type", "");
                 }
             }
         }
@@ -57,7 +63,7 @@ namespace Snupti.com
 
         public static int GetKitchenSize(int suctionvalue) 
         {
-            if (suctionvalue < 1300 ||suctionvalue > 875 && suctionvalue < 1300)
+            if (suctionvalue < 1300 || suctionvalue > 875 && suctionvalue < 1300)
             {
                 return 35;
             }

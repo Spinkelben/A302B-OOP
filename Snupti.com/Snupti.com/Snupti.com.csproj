@@ -41,12 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Dimentions.cs" />
     <Compile Include="Dryer.cs" />
     <Compile Include="ExhaustHood.cs" />
+=======
+    <Compile Include="BuildInOven.cs" />
+    <Compile Include="VentLessDryer.cs" />
+    <Compile Include="KitchenItem.cs" />
+    <Compile Include="EnergyRating.cs" />
+    <Compile Include="ExhaustHood.cs" />
+    <Compile Include="Dimensions.cs" />
+    <Compile Include="Dryer.cs" />
+    <Compile Include="ElectricalOven.cs" />
+>>>>>>> d8f91892a75fc168d63eac16b52141891d07ce5e
     <Compile Include="Item.cs" />
+    <Compile Include="NonKitchenItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="VentedDryer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

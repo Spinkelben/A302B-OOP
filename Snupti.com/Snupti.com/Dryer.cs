@@ -6,14 +6,28 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Dryer : Item
+    abstract class Dryer : Item, IEnergyRating
     {
-        //kWh per tørrecyklus
+        /// <summary>
+        /// kWh per tørrecyklus.
+        /// </summary>
         private double _powerConsumption;
-        //Kg
+        /// <summary>
+        /// Kapacitet i kg.
+        /// </summary>
         private int _capacity;
-        //Størrelse
+        /// <summary>
+        /// Dimentioner i mm. Højde, bredde og længde.
+        /// </summary>
         private Dimensions _size;
+        /// <summary>
+        /// Støjniveau.
+        /// </summary>
+        private int _noise;
+        /// <summary>
+        /// Tørretid i minutter.
+        /// </summary>
+        private int _dryingTime;
         /// <summary>
         /// Strømforbrug per tørrecyklus. kWh.
         /// </summary>
@@ -57,6 +71,9 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Dimentioner i mm. Længde, bredde og højde.
+        /// </summary>
         public Dimensions Size
         {
             get
@@ -68,6 +85,82 @@ namespace Snupti.com
                 _size = value;
             }
         }
+        /// <summary>
+        /// Støjniveau i decibal. Gyldige værdier: 0-140.
+        /// </summary>
+        public int NoiseLevel
+        {
+            get
+            {
+                return _noise;
+            }
+            set 
+            {
+                if (value.IsBetween(0, 140))
+                {
+                    _noise = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Tørretiden i minutter. Skal være større end eller lig 0.
+        /// </summary>
+        public int DryingTime
+        {
+            get 
+            {
+                return _dryingTime;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    _dryingTime = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Returnerer det relative strømforbrug E, som bruges i energiklasseberegningerne.
+        /// </summary>
+        /// <returns>Double, det relative strømforbrug, E</returns>
+        public double RelativePowerConsumption()
+        {
+            return _powerConsumption / _capacity;
+        }
+        /// <summary>
+        /// Returnerer en enum EnergyRating med den pågældende energiklasse.
+        /// </summary>
+        /// <returns>Enum EnergiRating. Energi klasse</returns>
+        public abstract EnergyRating GetEnergyRating();
+        /// <summary>
+        /// Vigtig hjælpemetode, som beregner energiklassen for en hvilken som helst type
+        /// af tørretumbler.
+        /// </summary>
+        /// <param name="energyThreshold"></param>
+        /// <returns></returns>
+        protected EnergyRating TumbleDryerEnergyRating(List<double> energyThreshold)
+        {
+            //Sorterer grænseværdierne så de er i ordnet rækkefølge, hvilket de burde være i forvejen!
+            energyThreshold.Sort();
+            //Sætter resultatet til den ringeste energiklasse
+            EnergyRating result = EnergyRating.G;
+            //Løber grænseværdierne igennem, en for en. Hvis strømforbruget ligger under grænseværdien
+            //opdateres result enum, med den energiklasse der knytter sig til grænseværdien.
+            foreach (double Threshold in energyThreshold)
+            {
+                if (RelativePowerConsumption() <= Threshold)
+                {
+                    result = (EnergyRating)energyThreshold.IndexOf(Threshold);
+                    break;
+                }
+            }
+            return result;
+        }
 
+        public override string ToString()
+        {
+
+            return base.ToString();
+        }
     }
 }

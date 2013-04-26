@@ -12,14 +12,19 @@ namespace Snupti.com
         {
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
-            Dryer hej = new Dryer();
+            
+            VentLessDryer Hej = new VentLessDryer("Smiele",5000);
+            Hej.PowerConsumption = 0.645;
+            Hej.Capacity = 1;
+           
+            Console.WriteLine("Energi pr kg tøj {0}, Energi rating: {1}", Hej.GetEnergyRating(), Hej.RelativePowerConsumption());
+            
+            int a = 5;
+            Console.WriteLine(a.IsBetween(0,4));
 
-            hej.PowerConsumption = 1;
-            hej.Size = size;
-
-            Console.WriteLine(hej.Size.Width);
 
             Console.ReadLine();
+
         }
     }
 }
