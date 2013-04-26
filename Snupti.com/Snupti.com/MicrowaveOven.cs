@@ -16,7 +16,10 @@ namespace Snupti.com
         private bool _hasGrill;
         public bool HasGrill
         {
-            get;
+            get
+            {
+                return _hasGrill;
+            }
         }
 
         public override SmileySystem Smiley
