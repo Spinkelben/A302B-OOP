@@ -119,7 +119,6 @@ namespace Snupti.com
                     return EnergyRating.A;
                 }
             }
-<<<<<<< HEAD
             else if (PowerConsumption < 1.0)
             {
                 if (Volume < 35)
@@ -210,25 +209,10 @@ namespace Snupti.com
                     return EnergyRating.F;
                 }
             }
-=======
-            //Jeg, Søren, har added denne else blok for at fjerne en fejl sådan at jeg kan koncentrerer 
-            // om den kode jeg arbejder på.
->>>>>>> d5f49efdc4b37516895eafc08b0527f0723e12ac
             else
             {
                 return EnergyRating.G;
             }
-<<<<<<< HEAD
-=======
-        }
-        public override KitchenItem.SmileySystem Smiley
-        {
-            get { throw new NotImplementedException(); }
-        }
-        public double RelativePowerConsumption()
-        {
-            throw new NotImplementedException();
->>>>>>> d5f49efdc4b37516895eafc08b0527f0723e12ac
         }
     }
 
