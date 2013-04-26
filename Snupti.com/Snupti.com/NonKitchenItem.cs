@@ -8,6 +8,6 @@ namespace Snupti.com
 {
     abstract class NonKitchenItem : Item
     {
-    
+    /* Tom klasse */
     }
 }

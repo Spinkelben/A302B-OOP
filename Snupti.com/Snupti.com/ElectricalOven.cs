@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snupti.com
 {
 
-    class ElectricalOven : KitchenItem, IEnergyRating
+    abstract class ElectricalOven : KitchenItem, IEnergyRating
     {
         /// <summary>
         /// Strømforbrug i kWh
@@ -108,7 +108,7 @@ namespace Snupti.com
             {
                 if (Volume < 35)
                 {
-                    return EnergyRating.A;
+                    return EnergyRating.B;
                 }
                 else if (Volume < 65)
                 {
@@ -119,20 +119,100 @@ namespace Snupti.com
                     return EnergyRating.A;
                 }
             }
-            //Jeg, Søren, har added denne else blok for at fjerne en fejl sådan at jeg kan koncentrerer 
-            // om den kode jeg arbejder på.
+            else if (PowerConsumption < 1.0)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.C;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.B;
+                }
+                else
+                {
+                    return EnergyRating.A;
+                }
+            }
+            else if (PowerConsumption < 1.2)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.D;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.C;
+                }
+                else
+                {
+                    return EnergyRating.B;
+                }
+            }
+            else if (PowerConsumption < 1.4)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.E;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.D;
+                }
+                else
+                {
+                    return EnergyRating.C;
+                }
+            }
+            else if (PowerConsumption < 1.6)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.F;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.E;
+                }
+                else
+                {
+                    return EnergyRating.D;
+                }
+            }
+            else if (PowerConsumption < 1.8)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.G;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.F;
+                }
+                else
+                {
+                    return EnergyRating.E;
+                }
+            }
+            else if (PowerConsumption < 2.0)
+            {
+                if (Volume < 35)
+                {
+                    return EnergyRating.G;
+                }
+                else if (Volume < 65)
+                {
+                    return EnergyRating.G;
+                }
+                else
+                {
+                    return EnergyRating.F;
+                }
+            }
             else
             {
                 return EnergyRating.G;
             }
-        }
-        public override KitchenItem.SmileySystem Smiley
-        {
-            get { throw new NotImplementedException(); }
-        }
-        public double RelativePowerConsumption()
-        {
-            throw new NotImplementedException();
         }
     }
 

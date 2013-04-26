@@ -156,11 +156,23 @@ namespace Snupti.com
             }
             return result;
         }
-
+        /// <summary>
+        /// Printer info om modellen i er læsbart format.
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
         public override string ToString()
         {
+            string result;
+            string itemString = base.ToString();
+            result = itemString;
+            result += "Strømforbrug: " + PowerConsumption + " kWh\n";
+            result += "Kapacitet: " + Capacity + " kg\n";
+            result += "Dimentioner, i mm, B: " + Size.Width + " L: " + Size.Length + " H: " + Size.Height + "\n";
+            result += "Støjniveau: " + NoiseLevel + " dB\n";
+            result += "Tørretid: " + DryingTime + " minutter\n";
 
-            return base.ToString();
+
+            return result;
         }
     }
 }

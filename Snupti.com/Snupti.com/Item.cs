@@ -50,7 +50,17 @@ namespace Snupti.com
                     _price = value;
                 }
             }
-
+        }
+        /// <summary>
+        /// Printer info om modellen i er læsbart format.
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
+        public override string ToString()
+        {
+            string result = "Model: " + Name + "\n";
+            result += "Pris: " + Price + " kr.\n";
+            return result;
         }
     }
+
 }

@@ -92,14 +92,18 @@ namespace Snupti.com
         {
             return TumbleDryerEnergyRating(_ventedDryerThreshold);
         }
-
+        /// <summary>
+        /// Printer info om modellen i er læsbart format.
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
         public override string ToString()
         {
             string result;
             string dryerSpecs = base.ToString();
-            result = "Type: Aftrækstørretumbler\n";
+            result = dryerSpecs;
+            result += "Type: Aftrækstørretumbler\n";
             result += "Energiklasse: " + GetEnergyRating() +"\n";
-            result += "Slange Medfølger: " + PipeIncluded.ToString() + "\n";
+            result += "Slange Medfølger: " + PipeIncluded.ToString();
 
             return result;
         }

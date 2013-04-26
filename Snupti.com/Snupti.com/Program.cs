@@ -13,7 +13,7 @@ namespace Snupti.com
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
             
-            VentLessDryer Hej = new VentLessDryer("Smiele",5000);
+            VentedDryer Hej = new VentedDryer("Smiele",5000);
             Hej.PowerConsumption = 0.645;
             Hej.Capacity = 1;
            
@@ -21,7 +21,7 @@ namespace Snupti.com
             
             int a = 5;
             Console.WriteLine(a.IsBetween(0,4));
-
+            Console.WriteLine(Hej.ToString());
 
             Console.ReadLine();
 
