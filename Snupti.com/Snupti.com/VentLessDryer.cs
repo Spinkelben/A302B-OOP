@@ -95,5 +95,20 @@ namespace Snupti.com
         {
             return TumbleDryerEnergyRating(_ventLessDryerThreshold);
         }
+        /// <summary>
+        /// Printer info om modellen i er læsbart format.
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
+        public override string ToString()
+        {
+            string result;
+            string dryerSpecs = base.ToString();
+            result = dryerSpecs;
+            result += "Type: Kondenstørretumbler\n";
+            result += "Energiklasse: " + GetEnergyRating() + "\n";
+            result += "Varmepumpe: " + HeatPump.ToString();
+
+            return result;
+        }
     }
 }
