@@ -16,6 +16,7 @@ namespace Snupti.com
         private bool _filter;
         private int _noiceLevel;
 
+
         internal enum HoodType
         {
             Frithængt,
