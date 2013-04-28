@@ -55,7 +55,6 @@ namespace Snupti.com
             }
         }
 
-
         public string Type
         {
             get 
