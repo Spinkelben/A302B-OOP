@@ -10,6 +10,7 @@ namespace Snupti.com
     {
         static void Main(string[] args)
         {
+            Inventory AllGoods = new Inventory();
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
             
@@ -22,6 +23,9 @@ namespace Snupti.com
             int a = 5;
             Console.WriteLine(a.IsBetween(0,4));
             Console.WriteLine(Hej.ToString());
+            AllGoods.Add(Hej, 500);
+            AllGoods.Add(Hej, 200);
+            Console.WriteLine(AllGoods.GetStatus());
 
             Console.ReadLine();
 
