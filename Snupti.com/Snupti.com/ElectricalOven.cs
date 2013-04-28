@@ -9,6 +9,12 @@ namespace Snupti.com
 
     abstract class ElectricalOven : KitchenItem, IEnergyRating
     {
+       /* public ElectricalOven(string name, int price, double powerConsumption, )
+            : base(name, price)
+        {
+            _powerConsumption = powerConsumption; 
+        } */
+        
         /// <summary>
         /// Strømforbrug i kWh
         /// </summary>

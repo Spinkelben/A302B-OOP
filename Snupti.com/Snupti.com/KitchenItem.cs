@@ -8,6 +8,11 @@ namespace Snupti.com
 {
     abstract class KitchenItem : Item
     {
+        public KitchenItem(string name, int price)
+            : base(name, price)
+        {
+        }
+
         /// <summary>
         /// Enum med de tre smileys - Sur, Ligeglad & Glad.
         /// </summary>
