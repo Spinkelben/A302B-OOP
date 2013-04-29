@@ -17,6 +17,16 @@ namespace Snupti.com
         private int _noiceLevel;
         private int _kitchenSize;
 
+        public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
+        {
+            Name = name;
+            Price = price;
+            Type = type;
+            SuctionCapacity = suctionCapacity;
+            Filter = filter;
+            Noicelevel = noiseLevel;
+        }
+
         internal enum HoodType
         {
             Frithængt,
