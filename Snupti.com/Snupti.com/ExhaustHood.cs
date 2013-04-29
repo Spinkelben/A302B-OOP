@@ -16,8 +16,6 @@ namespace Snupti.com
         private bool _filter;
         //dB 0 til 140
         private int _noiceLevel;
-        //kvadratmeter
-        
 
         /// <summary>
         /// Laver en ny instans af ExhaustHood
@@ -25,7 +23,7 @@ namespace Snupti.com
         /// <param name="name">Model navnet</param>
         /// <param name="price">Pris på produktet</param>
         /// <param name="type">Typer: Frithængt, Væghængt eller Indbygget</param>
-        /// <param name="suctionCapacity"></param>
+        /// <param name="suctionCapacity">Sugestyrke kubikmeter i timen</param>
         /// <param name="filter">Ja eller Nej</param>
         /// <param name="noiseLevel">Støjniveau i dB 0 til 140 </param>
         public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
@@ -38,27 +36,34 @@ namespace Snupti.com
             Noicelevel = noiseLevel;
         }
 
+        /// <summary>
+        /// enum som indeholder de forskellige typer af Emhætter.
+        /// </summary>
         internal enum HoodType
         {
             Frithængt,
             Væghængt,
             Indbygget
         }
-        
+
+        /// <summary>
+        /// Filter er Ja eller Nej.
+        /// </summary>
         public bool Filter
         {
-            get 
+            get
             {
                 return _filter;
             }
             set
             {
-                _filter = value;  
+                _filter = value;
             }
         }
 
         /// <summary>
-        /// 
+        /// Filter er bool som har værdien 1 eller 0, afhængig af om emhætten har filter eller ej
+        /// Bool'ens værdi svare til værdien i en enum.
         /// </summary>
         public override SmileySystem Smiley
         {
@@ -68,9 +73,12 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// NoiseLevel tager dB ind som en int, checker om værdien er imellem 0 og 140 dB.
+        /// </summary>
         public int Noicelevel
         {
-            get 
+            get
             {
                 return _noiceLevel;
             }
@@ -87,14 +95,18 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Tager en streng ind, der er kun tre valide strenginput ("Frithængt", "Væghængt" eller "Indbygget")
+        /// </summary>
         public string Type
         {
-            get 
+            get
             {
                 return _type;
             }
-            set 
-            {
+            set
+            {   
+                //Checker om input strengen er angivet i enum'en Hoodtype
                 if (Enum.IsDefined(typeof(HoodType), value))
                 {
                     _type = value;
@@ -107,9 +119,9 @@ namespace Snupti.com
         }
 
         /// <summary>
-        /// 
+        /// Tager en int ind, og ser om værdien er valid, altså over nul.
         /// </summary>
-        public int SuctionCapacity 
+        public int SuctionCapacity
         {
             get
             {
@@ -118,9 +130,9 @@ namespace Snupti.com
             set
             {
                 if (value > 0)
-                    {   
-                        _suctionCapacity = value;
-                    }
+                {
+                    _suctionCapacity = value;
+                }
                 else
                 {
                     throw new System.ArgumentOutOfRangeException("SuctionCapacity", "Suctioncapacity værdien kan ikke være negativ");
@@ -131,7 +143,7 @@ namespace Snupti.com
         /// <summary>
         /// GetKitchenSize returnere en int afhængigt af Sugekapaciteten
         /// </summary>
-        public int GetKitchenSize() 
+        public int GetKitchenSize()
         {
             if (SuctionCapacity > 875)
             {
@@ -173,14 +185,7 @@ namespace Snupti.com
             result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
             result += "Anbefalet max køkkenstørelse: " + GetKitchenSize() + " m\u00B2\n";
             result += "Filter: ";
-            if (Filter == true)
-            {
-                result += "Ja\n";
-            }
-            else
-            {
-                result += "Nej\n";
-            }
+            result += Filter ? "Ja\n" : "Nej\n";
             result += "Smiley: " + Smiley + "\n";
 
             return result;

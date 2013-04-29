@@ -24,9 +24,7 @@ namespace Snupti.com
             ExhaustHood ExHood3 = new ExhaustHood("Hood4U", 3100, "Væghængt", 1450, true, 135);
 
             Console.WriteLine(ExHood1.ToString());
-            Console.WriteLine("###############");
             Console.WriteLine(ExHood2.ToString());
-            Console.WriteLine("###############");
             Console.WriteLine(ExHood3.ToString());
 
 
