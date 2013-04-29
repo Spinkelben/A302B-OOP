@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage[a4paper,inner=2cm,outer=2cm,top=2cm,bottom=2cm,pdftex]{geometry}
+\graphicspath{{images/}}
+\newcommand{\mono}{\texttt}
+
+\begin{document}
+
+\title{OOP Eksamensopgave}
+\author{\bf{Gruppe A302 A}\\David Amtoft\\Mathias Johns Toustrup\\Michael Toft Jensen}
+\date{30. april, 2013}
+\maketitle
+
+\section{Oversigt (UML)}
+\includegraphics[width=\textwidth]{ClassDiagram2}
+
+\section{Løsningsbeskrivelse og kommentarer hertil}
+Overordnet set er hele opgavebeskrivelsen implementeret og virker efter hensigten. Herunder vil programmet beskrives:
+\begin{enumerate}
+	\item[] \textbf{Program.cs:} En console application. Denne indeholder en hardcoded demonstration af alle programmets funktioner. Der skrives verbost til konsollen, og demonstrationen er rimelig selvforklarende.
+	
+	\item[] \textbf{Item:} Udover navn og pris implementeres her også ``low stock''-eventen. \mono{LowStockThreshold} indeholder tærskelværdien for hvornår, der skal udløses et ``\mono{LowStock}''-event. Herudover implementeres \mono{delegate}n, \mono{event}en og de tilhørende hjælpefunktioner i henhold til standarden for implementeringen af \emph{custom events}. Dog implementeres \mono{EventArgs} ej, da der ikke skønnes er brug for dette. I \mono{EventHandlerExample.cs} findes metoden, som tager sig af \mono{event}en. Der kan kun oprettes én \emph{subscription} til hvert \mono{Item}. Når der laves en ``ny'', overskrives den gamle.
+	
+	\item[] \textbf{KitchenItem:} Implementerer interfacet ISmileySystem, som alle underklasser overrider.
+	
+	\item[] \textbf{Range:} Range implementeres ikke helt som i opgavebeskrivelsen, men derimod som et \emph{fluent interface}. Dette bedømmer vi, er en forbedring i forhold til den foreslåede løsning. Det er også en anderledes måde at implementere det på -- der er mange andre klasser, der viser det samme mønster.
+	
+	\item[] \textbf{Stock:} Indkapslingen af alle \mono{Item}s sker i en \mono{Stock}(lager). Lageret indeholder en dictionary, hvor \mono{Key} er varen, og \mono{Value} er antallet af denne vare i lageret. Udover de i opgavebeskrivelsen beskrevede metoder (\mono{add} og \mono{remove}) findes her også de fire søgefunktioner. Til sidst er der de to interatorer, som søger forlæns og baglæns sorteret efter pris. Der er eksempler på både basale lageroperationer, søgefunktionerne og iteratorerne i \mono{program.cs}
+	
+	\item[] \textbf{Opslag i tabeller:} Når der skal findes energiklasser, skal der slås op i tabellerne, som findes i opgavebeskrivelsen. Disse tabeller er implementeret som simple lister af \mono{doubles}, som der søges i. Se mere i \mono{Thresholds.cs}. For emhættens ``anbefalet max køkkenstørrelse'' ledes listen igennem bagfra, og kun første værdi benyttes (da det er den egentlige vigtige værdi).
+\end{enumerate}
+
+\section{Andre kilder benyttet}
+\begin{enumerate}
+	\item[] -- Microsoft Developer Network (MSDN)
+\end{enumerate}
+
+\section{Underskrifter}
+\vspace{2cm}
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+David Amtoft\\\\
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+Mathias Johns Toustrup\\\\
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+Michael Toft Jensen\\\\
+
+\end{document}
