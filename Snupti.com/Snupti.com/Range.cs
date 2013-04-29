@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Snupti.com
-{
+{   
     class Range<T> where T : IComparable
     {
         private T _minimum;

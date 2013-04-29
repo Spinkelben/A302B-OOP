@@ -202,13 +202,14 @@ namespace Snupti.com
             }
         }
 
-        //public  SortedForPrice<>() where T : IEnumerable<T>
-
+        /// <summary>
+        /// Returner en liste af produkter der ligger i mellem to givede værdier, som bliver sendt med.
+        /// </summary>
         public List<InventoryEntry> SortedForPrice(Range<decimal> range) 
         {
-            List<InventoryEntry> SortedList = new List<InventoryEntry>();
-            IEnumerable<InventoryEntry> items = SortedList.Where(p => range.Contains(p.Item.Price));
-            return SortedList;
+            List<InventoryEntry> PriceSortedList = new List<InventoryEntry>();
+            IEnumerable<InventoryEntry> items = PriceSortedList.Where(p => range.Contains(p.Item.Price));
+            return PriceSortedList;
         }
         /// <summary>
         /// Implementerer iteratoren der går fra index 0 til sidste element i listen.
