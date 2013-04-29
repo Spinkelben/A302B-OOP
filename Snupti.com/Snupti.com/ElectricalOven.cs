@@ -14,10 +14,7 @@ namespace Snupti.com
         {
             _powerConsumption = powerConsumption; 
         } */
-        public ElectricalOven() : base ("hej", (decimal) 5)
-        {
-            throw new System.NotImplementedException("FEJLEELELELEEL");
-        }
+        
 
         /// <summary>
         /// Strømforbrug i kWh
@@ -82,7 +79,7 @@ namespace Snupti.com
             }
             set
             {
-                if (value < 0)
+                if (value > 0)
                 {
                     _volume = value;
                 }
@@ -91,6 +88,21 @@ namespace Snupti.com
                     throw new System.ArgumentOutOfRangeException("Volume", "Volume kan ikke være mindre end 0");
                 }
             }
+        }
+        /// <summary>
+        /// Constructor der ikke tildeler nogen default værdier.
+        /// </summary>
+        /// <param name="name">Modelnavn.</param>
+        /// <param name="price">Pris i kr.</param>
+        /// <param name="powerConsumption">Strømforbrug i kWh.</param>
+        /// <param name="size">Dimentioner i mm, længde, bredde højde</param>
+        /// <param name="volume">Ovnens volumen i liter.</param>
+        public ElectricalOven(string name, decimal price, double powerConsumption, Dimensions size, int volume)
+            : base(name, price)
+        {
+            PowerConsumption = powerConsumption;
+            Size = size;
+            Volume = volume;
         }
 
         /// <summary>

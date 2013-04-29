@@ -9,11 +9,17 @@ namespace Snupti.com
     class MicrowaveOven : ElectricalOven
     {
         /// <summary>
-        /// Constructor med de to bools, hasGrill og hasConvection
+        /// Constructor til Mikroovnsklassen.
         /// </summary>
-        /// <param name="hasGrill">Hvorvidt mikroovnen har indbygget grill eller ej.</param>
-        /// <param name="hasConvection">Hvorvidt mikroovnen har varmluft eller ej.</param>
-        public MicrowaveOven(bool hasGrill, bool hasConvection) : base()
+        /// <param name="name">Modelnavn.</param>
+        /// <param name="price">Pris i kr.</param>
+        /// <param name="powerConsumption">Strømforbrug.</param>
+        /// <param name="size">Dimensioner i mm, længde, bredde, højde.</param>
+        /// <param name="volume">Volumen i liter.</param>
+        /// <param name="hasGrill">Hvorvidt mikroovnen har grillfunktion.</param>
+        /// <param name="hasConvection">Hvorvidt mikroovnen har varmluft.</param>
+        public MicrowaveOven(string name, decimal price, double powerConsumption, Dimensions size, int volume, 
+            bool hasGrill, bool hasConvection) : base(name, price, powerConsumption, size, volume)
         {
             _hasGrill = hasGrill;
             _hasConvection = hasConvection;

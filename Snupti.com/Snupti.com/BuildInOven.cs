@@ -8,27 +8,9 @@ namespace Snupti.com
 {
     class BuildInOven : ElectricalOven
     {
-        /// <summary>
-        /// Constructor med en bool 'HasCleaningFunctionality' og en liste med tilbehør
-        /// </summary>
-        /// <param name="hasCleaningFunctionality">Hvorvidt indbygningsovnen har rensefunktion eller ej.</param>
-        /// <param name="accessories">Tilbehør</param>
-        public BuildInOven(bool hasCleaningFunctionality, List<string> accessories)
-            : base()
-        {
-            _hasCleaningFunctionality = hasCleaningFunctionality;
-            _accessories = accessories;
-        }
+        
 
-        /// <summary>
-        /// Laver et array af strings giver det til constructoren og udfylder tilbehørslisten med elementerne fra arrayet.
-        /// </summary>
-        /// <param name="hasCleaningFunctionality">Hvorvidt indbygningsovnen har rensefunktion eller ej.</param>
-        /// <param name="accessories">Tilbehør</param>
-        public BuildInOven(bool hasCleaningFunctionality, string[] accessories)
-           : this(hasCleaningFunctionality, new List<string>(accessories))
-        {       
-        }
+        
 
         /// <summary>
         /// Liste med tilbehør.
@@ -71,6 +53,38 @@ namespace Snupti.com
             {
                 return HasCleaningFunctionality ? SmileySystem.Glad : SmileySystem.Ligeglad;
             }
+        }
+        /// <summary>
+        /// Laver et array af strings giver det til constructoren og udfylder tilbehørslisten med elementerne fra arrayet.
+        /// </summary>
+        /// <param name="name">Modelnavn</param>
+        /// <param name="price">Pris i kr.</param>
+        /// <param name="powerConsumption">Strømforbrug i kWh.</param>
+        /// <param name="size">Størrelse i mm, længde, bredde højde.</param>
+        /// <param name="volume">Volumen i liter.</param>
+        /// <param name="hasCleaningFunctionality">Hvorvidt indbygningsovnen har rensefunktion eller ej.</param>
+        /// <param name="accessories">Tilbehør</param>
+        public BuildInOven(string name, decimal price, double powerConsumption, Dimensions size, int volume,
+            bool hasCleaningFunctionality, string[] accessories)
+            : this(name, price, powerConsumption, size, volume, hasCleaningFunctionality, new List<string>(accessories))
+        {
+        }
+        /// <summary>
+        /// Constructor til indbygningsovn.
+        /// </summary>
+        /// <param name="name">Modelnavn</param>
+        /// <param name="price">Pris i kr.</param>
+        /// <param name="powerConsumption">Strømforbrug i kWh.</param>
+        /// <param name="size">Størrelse i mm, længde, bredde højde.</param>
+        /// <param name="volume">Volumen i liter.</param>
+        /// <param name="hasCleaningFunctionality">Hvorvidt ovnen har rensefunktion</param>
+        /// <param name="accessories">Liste med tilbehør.</param>
+        public BuildInOven(string name, decimal price, double powerConsumption, Dimensions size, int volume,
+            bool hasCleaningFunctionality, List<string> accessories)
+            : base(name, price, powerConsumption, size, volume)
+        {
+            _hasCleaningFunctionality = hasCleaningFunctionality;
+            _accessories = accessories;
         }
 
         /// <summary>
