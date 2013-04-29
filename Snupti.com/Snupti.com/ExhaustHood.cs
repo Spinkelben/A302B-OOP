@@ -151,11 +151,6 @@ namespace Snupti.com
             }
             result += "Smiley: " + KitchenSize + "\n";
 
-            
-            
-            
-
-
             return result;
         }
 
