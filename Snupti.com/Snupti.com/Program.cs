@@ -32,7 +32,10 @@ namespace Snupti.com
             AllGoods.AddExisting("Siemens SilentDry", 5);
             AllGoods.Remove("Dyson Instadry", 10);
             Console.WriteLine(AllGoods.GetStatus());
-
+            AllGoods.Remove(Ventd1, 700);
+            Console.WriteLine(AllGoods.GetStatus());
+            AllGoods.RemoveFromDatabase(Ventd1);
+            Console.WriteLine(AllGoods.GetStatus());
             Console.ReadLine();
 
         }
