@@ -17,7 +17,7 @@ namespace Snupti.com
         //dB 0 til 140
         private int _noiceLevel;
         //kvadratmeter
-        private int _kitchenSize;
+        
 
         /// <summary>
         /// Laver en ny instans af ExhaustHood
@@ -120,7 +120,6 @@ namespace Snupti.com
             {
                 if (value > 0)
                     {   
-                        _kitchenSize = GetKitchenSize(SuctionCapacity);
                         _suctionCapacity = value;
                     }
                 else
@@ -130,39 +129,32 @@ namespace Snupti.com
             }
         }
 
-        public int KitchenSize
-        {
-            get
-            {
-                return _kitchenSize;
-            }
-        }
         /// <summary>
         /// GetKitchenSize returnere en int afhængigt af Sugekapaciteten
         /// </summary>
-        public static int GetKitchenSize(int suctionvalue) 
+        public int GetKitchenSize() 
         {
-            if (suctionvalue < 1300)
+            if (SuctionCapacity > 875)
             {
                 return 35;
             }
-            if (suctionvalue > 750)
+            if (SuctionCapacity > 750)
             {
                 return 30;
             }
-            if (suctionvalue > 625)
+            if (SuctionCapacity > 625)
             {
                 return 25;
             }
-            if (suctionvalue > 500)
+            if (SuctionCapacity > 500)
             {
                 return 20;
             }
-            if (suctionvalue > 375)
+            if (SuctionCapacity > 375)
             {
                 return 15;
             }
-            if (suctionvalue > 250)
+            if (SuctionCapacity > 250)
             {
                 return 10;
             }
@@ -180,9 +172,9 @@ namespace Snupti.com
             result += "Type: " + Type + "\n";
             result += "Støjniveau: " + Noicelevel + " dB\n";
             result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
-            result += "Anbefalet max køkkenstørelse: " + KitchenSize + " m\u00B2\n";
+            result += "Anbefalet max køkkenstørelse: " + GetKitchenSize() + " m\u00B2\n";
             result += "Filter: ";
-            if (Filter == false)
+            if (Filter == true)
             {
                 result += "Ja\n";
             }

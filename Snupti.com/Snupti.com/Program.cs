@@ -22,7 +22,7 @@ namespace Snupti.com
             ExhaustHood ExHood1 = new ExhaustHood("Suck-O-Matic", 1200, "Frithængt", 610, false, 78);
             ExhaustHood ExHood2 = new ExhaustHood("NoFan-LowNoise", 1750, "Indbygget", 175, true, 25);
             ExhaustHood ExHood3 = new ExhaustHood("Hood4U", 3100, "Væghængt", 1450, true, 135);
-
+            Console.WriteLine(ExHood1.ToString());
             //Tilføjer varer til lagerlisten
             AllGoods.Add(Ventd1, 500);
             Console.WriteLine(AllGoods.GetStatus());
