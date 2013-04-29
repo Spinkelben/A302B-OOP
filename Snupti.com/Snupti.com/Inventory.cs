@@ -203,6 +203,21 @@ namespace Snupti.com
         }
 
         /// <summary>
+        /// Søgefunktion der finder alle varer hvis navn matcher en angivet søgestreng.
+        /// </summary>
+        /// <param name="name">Navn</param>
+        /// <returns>foundItems</returns>
+        public List<Item> SearchForName(string name)
+        {
+            List<Item> foundItems = new List<Item>();
+            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item.Name == name))
+            {
+                foundItems.Add(inv.Item);
+            }
+            return foundItems;
+        }
+
+        /// <summary>
         /// Returner en liste af produkter der ligger i mellem to givede værdier, som bliver sendt med.
         /// </summary>
         public List<InventoryEntry> SortedForPrice(Range<decimal> range) 
@@ -211,6 +226,37 @@ namespace Snupti.com
             IEnumerable<InventoryEntry> items = PriceSortedList.Where(p => range.Contains(p.Item.Price));
             return PriceSortedList;
         }
+
+        /// <summary>
+        /// Søgefunktion der finder alle tørretumblere med et angivet energimærke.
+        /// </summary>
+        /// <param name="rating">Energiklasse</param>
+        /// <returns>foundItems</returns>
+        public List<Item> SearchForEnergyRating(EnergyRating rating)
+        {
+            List<Item> foundItems = new List<Item>();
+            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item is Dryer && ((Dryer)(invEntry.Item)).GetEnergyRating() == rating))
+            {
+                foundItems.Add(inv.Item);
+            }
+            return foundItems;
+        }
+
+        /// <summary>
+        /// Søgefunktion der finder alle varer der har en angivet smiley.
+        /// </summary>
+        /// <param name="smiley">Smileyordning</param>
+        /// <returns>foundItems</returns>
+        public List<Item> SearchForSmiley(KitchenItem.SmileySystem smiley)
+        {
+            List<Item> foundItems = new List<Item>();
+            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item is KitchenItem && ((KitchenItem)(invEntry.Item)).Smiley == smiley))
+            {
+                foundItems.Add(inv.Item);
+            }
+            return foundItems;
+        }
+
         /// <summary>
         /// Implementerer iteratoren der går fra index 0 til sidste element i listen.
         /// </summary>
