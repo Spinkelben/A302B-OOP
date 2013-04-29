@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class ExhaustHood : Item
+    class ExhaustHood : KitchenItem
     {
         //fri, væg, indbygget
         private string _type;
@@ -15,7 +15,6 @@ namespace Snupti.com
         // ja og nej
         private bool _filter;
         private int _noiceLevel;
-
 
         internal enum HoodType
         {
@@ -95,7 +94,7 @@ namespace Snupti.com
 
         public static int GetKitchenSize(int suctionvalue) 
         {
-            if (suctionvalue < 1300 || suctionvalue > 875 && suctionvalue < 1300)
+            if (suctionvalue > 875)
             {
                 return 35;
             }
