@@ -65,8 +65,12 @@ namespace Snupti.com
         }
         public void Remove(Item item, int amount)
         {
+            this.Remove(item.Name, amount);
+        }
+        public void Remove(string name, int amount)
+        {
             //Tjek om varen allerede findes i listen
-            var items = _stock.Where(s => s.Item.Name == item.Name);
+            var items = _stock.Where(s => s.Item.Name == name);
             if (items.Count() > 1)
             {
                 throw new Exception("Mere end en type vare med det modelnavn");
