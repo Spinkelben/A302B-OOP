@@ -39,15 +39,10 @@ namespace Snupti.com
                 return HasGrill ? SmileySystem.Ligeglad : SmileySystem.Sur;
             }
         }
-<<<<<<< HEAD
-
         /// <summary>
         /// Udprinting af information om modellerne
         /// </summary>
         /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
-=======
-        
->>>>>>> f3daf501cfb56e3a1d0478896bcbfa215a5db130
         public override string ToString()
         {
             string result;
