@@ -46,6 +46,10 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Udprinting af information om modellerne
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
         public override string ToString()
         {
             string result;

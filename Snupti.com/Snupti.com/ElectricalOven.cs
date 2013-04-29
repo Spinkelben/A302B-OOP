@@ -66,7 +66,7 @@ namespace Snupti.com
                 _size = value;
             }
         }
-
+        
         /// <summary>
         /// Volumen i liter
         /// </summary>
