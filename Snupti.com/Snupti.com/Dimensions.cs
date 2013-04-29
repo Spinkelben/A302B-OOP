@@ -20,7 +20,9 @@ namespace Snupti.com
         /// Milimeter
         /// </summary>
         private int _length;
-
+        /// <summary>
+        /// Bredde i milimeter.
+        /// </summary>
         public int Width
         {
             get
@@ -39,7 +41,9 @@ namespace Snupti.com
                 }
             }
         }
-
+        /// <summary>
+        /// Højde i milimeter.
+        /// </summary>
         public int Height
         {
             get
@@ -58,7 +62,9 @@ namespace Snupti.com
                 }
             }
         }
-
+        /// <summary>
+        /// Længde i milimeter.
+        /// </summary>
         public int Length
         {
             get
@@ -77,24 +83,39 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Skaber ny instans af størrelses klassen med højde, længde og bredde på 1 mm.
+        /// </summary>
         public Dimensions() 
             : this(1 ,1 ,1)
         {
             /*Empty*/
         }
-
+        /// <summary>
+        /// Ny instans af størrelse, med højde og bredde på 1 mm.
+        /// </summary>
+        /// <param name="length">Længden i mm.</param>
         public Dimensions(int length)
             : this(length, 1, 1)
         {
             /*Empty*/
         }
-
+        /// <summary>
+        /// Ny instans af størrelse, med højden 1 mm.
+        /// </summary>
+        /// <param name="length">Længden i mm.</param>
+        /// <param name="width">Bredden i mm.</param>
         public Dimensions(int length, int width)
             : this(length, width, 1)
         {
             /*Empty*/
         }
-
+        /// <summary>
+        /// Ny instans af størrelsen.
+        /// </summary>
+        /// <param name="length">Længde i mm.</param>
+        /// <param name="width">Bredde i mm.</param>
+        /// <param name="height">Højde i mm.</param>
         public Dimensions(int length, int width, int height)
         {
             Length = length;
