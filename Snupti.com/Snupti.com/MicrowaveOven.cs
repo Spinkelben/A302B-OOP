@@ -39,7 +39,7 @@ namespace Snupti.com
                 return HasGrill ? SmileySystem.Ligeglad : SmileySystem.Sur;
             }
         }
-
+        
         public override string ToString()
         {
             string result;

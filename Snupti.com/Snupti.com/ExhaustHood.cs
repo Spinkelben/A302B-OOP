@@ -46,6 +46,14 @@ namespace Snupti.com
             }
         }
 
+        public override SmileySystem Smiley
+        {
+            get
+            {
+                return Filter ? SmileySystem.Sur : SmileySystem.Ligeglad;
+            }
+        }
+
         public int Noicelevel
         {
             get 
@@ -144,8 +152,8 @@ namespace Snupti.com
         public override string ToString()
         {
             string result;
-            string itemString = base.ToString();
-            result = itemString;
+            string ExHood = base.ToString();
+            result = ExHood;
             result += "Type: " + Type + "\n";
             result += "Støjniveau: " + Noicelevel +" dB\n";
             result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
