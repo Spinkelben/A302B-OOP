@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    static class Range
+    class Range<T> where T : IComparable
     {
-        private decimal _minimum;
-        private decimal _maximum;
+        private T _minimum;
+        private T _maximum;
 
-        public decimal Minimum
+        public T Minimum
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Snupti.com
             }
         }
 
-        public decimal Maximum
+        public T Maximum
         {
             get
             {
@@ -34,11 +34,21 @@ namespace Snupti.com
                 _maximum = value;
             }
         }
-       
 
-        public static bool IsBetween<T>(this T value, T minimum, T maximum) where T : IComparable
+        public Range(T minimum, T maximum)
         {
-            return value.CompareTo(minimum) >= 0 && value.CompareTo(maximum) <= 0;
+            Minimum = minimum;
+            Maximum = maximum;
+        }
+
+        public bool Contains(T value)
+        {
+            return this.Contains(value, Minimum, Maximum);
+        }
+
+        public bool Contains(T value, T Minimum, T Maximum) 
+        {
+            return value.CompareTo(Minimum) >= 0 && value.CompareTo(Maximum) <= 0;
         }
     }
 }

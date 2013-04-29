@@ -15,7 +15,7 @@ namespace Snupti.com
         // ja og nej
         private bool _filter;
         //dB 0 til 140
-        private int _noiceLevel;
+        private int _noiseLevel;
 
         /// <summary>
         /// Laver en ny instans af ExhaustHood
@@ -78,13 +78,13 @@ namespace Snupti.com
         {
             get
             {
-                return _noiceLevel;
+                return _noiseLevel;
             }
             set
             {
-                if (value.IsBetween(0, 140))
+                if (NoiseRange.Contains(value))
                 {
-                    _noiceLevel = value;
+                    _noiseLevel = value;
                 }
                 else
                 {

@@ -96,7 +96,7 @@ namespace Snupti.com
             }
             set 
             {
-                if (value.IsBetween(0, 140))
+                if (NoiseRange.Contains(value))
                 {
                     _noise = value;
                 }

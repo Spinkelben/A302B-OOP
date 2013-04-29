@@ -173,11 +173,10 @@ namespace Snupti.com
 
         //public  SortedForPrice<>() where T : IEnumerable<T>
 
-        public List<InventoryEntry> SortedForPrice() 
+        public List<InventoryEntry> SortedForPrice(Range<decimal> range) 
         {
             List<InventoryEntry> SortedList = new List<InventoryEntry>();
-            IEnumerable<InventoryEntry> items = SortedList.Where(p => p.Item.Name == "streng");
-
+            IEnumerable<InventoryEntry> items = SortedList.Where(p => range.Contains(p.Item.Price));
             return SortedList;
         }
     }

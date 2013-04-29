@@ -10,6 +10,8 @@ namespace Snupti.com
     {
         static void Main(string[] args)
         {
+
+
             //Instantier lagerlisten 
             Inventory AllGoods = Inventory.GetInstance();
             

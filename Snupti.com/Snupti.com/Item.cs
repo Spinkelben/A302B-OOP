@@ -10,7 +10,8 @@ namespace Snupti.com
     {
         private string _name;
         private decimal _price;
-
+        private static Range<int> _noiseRange = new Range<int>(0 , 140);
+        
         protected Item(string name, decimal price)
         {
             Name = name;
@@ -62,6 +63,16 @@ namespace Snupti.com
                 }
             }
         }
+
+        protected Range<int> NoiseRange
+        {
+            get
+            {
+                return _noiseRange;
+            }
+        }
+
+        
         /// <summary>
         /// Printer info om modellen i er læsbart format.
         /// </summary>
