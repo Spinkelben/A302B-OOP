@@ -19,6 +19,9 @@ namespace Snupti.com
             VentedDryer Ventd2 = new VentedDryer("Siemens SilentDry", 4500, 6.7, 7, new Dimensions(1000, 1500, 1250), 50, 150, false);
             VentLessDryer VentL1 = new VentLessDryer("Dyson Instadry", 5500, 7.8, 5, new Dimensions(1250, 1250, 1250), 130, 5, true);
             VentLessDryer VentL2 = new VentLessDryer("Focus Hocus Pocus Dry", 4999, 3.2, 6, new Dimensions(1300, 1450, 1500), 78, 100, false);
+            ExhaustHood ExHood1 = new ExhaustHood("Suck-O-Matic", 1200, "Frithængt", 610, false, 78);
+            ExhaustHood ExHood2 = new ExhaustHood("NoFan-LowNoise", 1750, "Indbygget", 175, true, 25);
+            ExhaustHood ExHood3 = new ExhaustHood("Hood4U", 3100, "Væghængt", 1450, true, 135);
 
             //Tilføjer varer til lagerlisten
             AllGoods.Add(Ventd1, 500);

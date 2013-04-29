@@ -102,11 +102,14 @@ namespace Snupti.com
                 }
                 else
                 {
-                    throw new System.ArgumentOutOfRangeException("Type", "");
+                    throw new System.ArgumentOutOfRangeException("Type", "Typen er ikke en valid streng");
                 }
             }
         }
-           
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int SuctionCapacity 
         {
             get
@@ -116,13 +119,13 @@ namespace Snupti.com
             set
             {
                 if (value > 0)
-                    {
+                    {   
                         _kitchenSize = GetKitchenSize(SuctionCapacity);
                         _suctionCapacity = value;
                     }
                 else
                 {
-                    throw new System.ArgumentOutOfRangeException("SuctionCapacity", "Suctioncapacity kan ikke være negativ");
+                    throw new System.ArgumentOutOfRangeException("SuctionCapacity", "Suctioncapacity værdien kan ikke være negativ");
                 }
             }
         }
@@ -134,36 +137,41 @@ namespace Snupti.com
                 return _kitchenSize;
             }
         }
-
+        /// <summary>
+        /// GetKitchenSize returnere en int afhængigt af Sugekapaciteten
+        /// </summary>
         public static int GetKitchenSize(int suctionvalue) 
         {
-            if (suctionvalue < 1300 || suctionvalue > 875 && suctionvalue < 1300)
+            if (suctionvalue < 1300)
             {
                 return 35;
             }
-            if (suctionvalue > 750 && suctionvalue < 1100)
+            if (suctionvalue > 750)
             {
                 return 30;
             }
-            if (suctionvalue > 625 && suctionvalue < 900)
+            if (suctionvalue > 625)
             {
                 return 25;
             }
-            if (suctionvalue > 500 && suctionvalue < 750)
+            if (suctionvalue > 500)
             {
                 return 20;
             }
-            if (suctionvalue > 375 && suctionvalue < 750)
+            if (suctionvalue > 375)
             {
                 return 15;
             }
-            if (suctionvalue > 250 && suctionvalue < 500)
+            if (suctionvalue > 250)
             {
                 return 10;
             }
             return 10;
         }
 
+        /// <summary>
+        /// Returner en string som indeholder alle værdierne fra ExhaustHood klassen
+        /// </summary>
         public override string ToString()
         {
             string result;
@@ -182,7 +190,7 @@ namespace Snupti.com
             {
                 result += "Nej\n";
             }
-            result += "Smiley: " + KitchenSize + "\n";
+            result += "Smiley: " + Smiley + "\n";
 
             return result;
         }
