@@ -9,25 +9,13 @@ namespace Snupti.com
     abstract class Item
     {
         private string _name;
-        private int _price;
+        private decimal _price;
 
-        //public Item(string name, int price)
-        //{
-        //    if (name == null)
-        //    {
-        //        throw new System.ArgumentNullException("Name");
-        //    }
-        //    else if (name == "")
-        //    {
-        //        throw new System.ArgumentException("Name", "Name må ikke være en tom streng \"\".");
-        //    }
-        //    else
-        //    {
-        //        _name = name;
-        //    }
-        //    _name = name;
-        //    _price = price;
-        //}
+        protected Item(string name, decimal price)
+        {
+            Name = name;
+            Price = price;
+        }
         /// <summary>
         /// Modelnavnet på varen.
         /// </summary>
@@ -56,7 +44,7 @@ namespace Snupti.com
         /// <summary>
         /// Prisen på varen i kr.
         /// </summary>
-        public int Price
+        public decimal Price
         {
             get
             {

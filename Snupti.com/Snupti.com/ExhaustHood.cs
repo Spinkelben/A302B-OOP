@@ -26,10 +26,8 @@ namespace Snupti.com
         /// <param name="suctionCapacity">Sugestyrke kubikmeter i timen</param>
         /// <param name="filter">Ja eller Nej</param>
         /// <param name="noiseLevel">Støjniveau i dB 0 til 140 </param>
-        public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
+        public ExhaustHood(string name, decimal price, string type, int suctionCapacity, bool filter, int noiseLevel) : base(name, price)
         {
-            Name = name;
-            Price = price;
             Type = type;
             SuctionCapacity = suctionCapacity;
             Filter = filter;
