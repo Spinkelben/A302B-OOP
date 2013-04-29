@@ -48,6 +48,11 @@ namespace Snupti.com
             Console.WriteLine(AllGoods.GetStatus());
             AllGoods.RemoveFromDatabase(Ventd1);
             Console.WriteLine(AllGoods.GetStatus());
+            foreach (InventoryEntry IE in AllGoods.HighToLow)
+            {
+                Console.WriteLine(IE.ToString());
+            }
+
             Console.ReadLine();
 
             //Afmelder observeren

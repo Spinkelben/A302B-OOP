@@ -93,5 +93,10 @@ namespace Snupti.com
             Amount = amount;
             LowStockThreshold = lowStockThreshold;
         }
+
+        public override string ToString()
+        {
+            return "Model: " + this.Item.Name + " Antal: " + this.Amount + " Lav-varebeholdningsgrænseværdi: " + this.LowStockThreshold;
+        }
     }
 }

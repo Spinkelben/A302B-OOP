@@ -14,7 +14,11 @@ namespace Snupti.com
         {
             _powerConsumption = powerConsumption; 
         } */
-        
+        public ElectricalOven() : base ("hej", (decimal) 5)
+        {
+            throw new System.NotImplementedException("FEJLEELELELEEL");
+        }
+
         /// <summary>
         /// Strømforbrug i kWh
         /// </summary>

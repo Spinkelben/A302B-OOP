@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Inventory
+    class Inventory : IEnumerable<InventoryEntry>
     {
         /// <summary>
         /// Lagerlisten.
@@ -62,7 +62,7 @@ namespace Snupti.com
             string result = "";
             foreach (InventoryEntry i in _stock)
             {
-                result += "Model: " + i.Item.Name + " Antal: " + i.Amount + "\n"; 
+                result += i.ToString() + "\n"; 
             }
             return result;
         }
@@ -210,5 +210,49 @@ namespace Snupti.com
             IEnumerable<InventoryEntry> items = SortedList.Where(p => range.Contains(p.Item.Price));
             return SortedList;
         }
+        /// <summary>
+        /// Implementerer iteratoren der går fra index 0 til sidste element i listen.
+        /// </summary>
+        /// <returns>Iteratoren.</returns>
+        public IEnumerator<InventoryEntry> GetEnumerator()
+        {
+            for (int i = 0; i < _stock.Count(); i++)
+            {
+                yield return _stock[i];
+            }
+        }
+        /// <summary>
+        /// Implementerer IEnumerable
+        /// </summary>
+        /// <returns>Standard iteratoren</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        /// <summary>
+        /// Gennemgår elementerne fra lav index til høj. Dette er standard opførslen, derfor returnerer 
+        /// den bare sig selv.
+        /// </summary>
+        public IEnumerable<InventoryEntry> LowToHigh
+        {
+            get
+            {
+                return this;
+            }
+        }
+        /// <summary>
+        /// Gennemgår elementern fra høj index til lav.
+        /// </summary>
+        public IEnumerable<InventoryEntry> HighToLow
+        {
+            get
+            {
+                for (int i = _stock.Count() - 1; i >= 0; i--)
+                {
+                    yield return _stock[i];
+                }
+            }
+        }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Snupti.com
 
         protected KitchenItem(string name, decimal price) : base(name, price)
         {
+            /*Med vilje tom*/
         }
 
         /// <summary>
