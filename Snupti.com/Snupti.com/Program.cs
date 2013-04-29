@@ -11,7 +11,7 @@ namespace Snupti.com
         static void Main(string[] args)
         {
             //Instantier lagerlisten 
-            Inventory AllGoods = new Inventory();
+            Inventory AllGoods = Inventory.GetInstance();
             
             //Skaber varer
             
