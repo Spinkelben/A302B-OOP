@@ -87,7 +87,6 @@ namespace Snupti.com
             }
         }
 
-
         public string Type
         {
             get 
@@ -121,6 +120,7 @@ namespace Snupti.com
                 if (value > 0)
                     {   
                         _suctionCapacity = value;
+                        _kitchenSize = GetKitchenSize(SuctionCapacity);
                     }
                 else
                 {
@@ -186,6 +186,30 @@ namespace Snupti.com
 
             return result;
         }
+
+        public override string ToString()
+        {
+            string result;
+            string ExHood = base.ToString();
+            result = ExHood;
+            result += "Type: " + Type + "\n";
+            result += "Støjniveau: " + Noicelevel +" dB\n";
+            result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
+            result += "Anbefalet max køkkenstørelse: " + KitchenSize + " m\u00B2\n";
+            result += "Filter: ";
+            if (Filter == false)
+            {
+                result += "Ja\n";
+            }
+            else
+            {
+                result += "Nej\n";
+            }
+            result += "Smiley: " + Smiley + "\n";
+
+            return result;
+        }
+
     }
 }
 
