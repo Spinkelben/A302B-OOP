@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class Item
+    abstract class Item
     {
         private string _name;
         private int _price;
 
-        public Item(string name, int price)
-        {
-            if (name == null)
-            {
-                throw new System.ArgumentNullException("Name");
-            }
-            else if (name == "")
-            {
-                throw new System.ArgumentException("Name", "Name må ikke være en tom streng \"\".");
-            }
-            else
-            {
-                _name = name;
-            }
-            _name = name;
-            _price = price;
-        }
-
+        //public Item(string name, int price)
+        //{
+        //    if (name == null)
+        //    {
+        //        throw new System.ArgumentNullException("Name");
+        //    }
+        //    else if (name == "")
+        //    {
+        //        throw new System.ArgumentException("Name", "Name må ikke være en tom streng \"\".");
+        //    }
+        //    else
+        //    {
+        //        _name = name;
+        //    }
+        //    _name = name;
+        //    _price = price;
+        //}
+        /// <summary>
+        /// Modelnavnet på varen.
+        /// </summary>
         public string Name
         {
             get
@@ -51,6 +53,9 @@ namespace Snupti.com
                 }
             }
         }
+        /// <summary>
+        /// Prisen på varen i kr.
+        /// </summary>
         public int Price
         {
             get
