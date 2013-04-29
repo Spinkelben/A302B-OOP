@@ -6,17 +6,28 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class ExhaustHood : KitchenItem
+    class ExhaustHood : Item
     {
         //fri, væg, indbygget
         private string _type;
-        //kubic meter i timen
+        //kubikmeter i timen
         private int _suctionCapacity;
         // ja og nej
         private bool _filter;
+        //dB 0 til 140
         private int _noiceLevel;
+        //kvadratmeter
         private int _kitchenSize;
 
+        /// <summary>
+        /// Laver en ny instans af ExhaustHood
+        /// </summary>
+        /// <param name="name">Model navnet</param>
+        /// <param name="price">Pris på produktet</param>
+        /// <param name="type">Typer: Frithængt, Væghængt eller Indbygget</param>
+        /// <param name="suctionCapacity"></param>
+        /// <param name="filter"></param>
+        /// <param name="noiseLevel">Støjniveau i </param>
         public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
         {
             Name = name;
@@ -33,7 +44,7 @@ namespace Snupti.com
             Væghængt,
             Indbygget
         }
-
+        
         public bool Filter
         {
             get 
@@ -46,11 +57,14 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override SmileySystem Smiley
         {
             get
             {
-                return Filter ? SmileySystem.Sur : SmileySystem.Ligeglad;
+                return Filter ? SmileySystem.Ligeglad : SmileySystem.Sur;
             }
         }
 
@@ -72,6 +86,7 @@ namespace Snupti.com
                 }
             }
         }
+
 
         public string Type
         {
@@ -103,7 +118,6 @@ namespace Snupti.com
                 if (value > 0)
                     {
                         _suctionCapacity = value;
-                        _kitchenSize = GetKitchenSize(SuctionCapacity);
                     }
                 else
                 {
@@ -112,66 +126,33 @@ namespace Snupti.com
             }
         }
 
-        public int KitchenSize 
-        {
-            get 
-            {
-                return _kitchenSize;
-            }
-        }
-
         public static int GetKitchenSize(int suctionvalue) 
         {
-            if (suctionvalue > 875)
+            if (suctionvalue < 1300 || suctionvalue > 875 && suctionvalue < 1300)
             {
                 return 35;
             }
-            if (suctionvalue > 750)
+            if (suctionvalue > 750 && suctionvalue < 1100)
             {
                 return 30;
             }
-            if (suctionvalue > 625)
+            if (suctionvalue > 625 && suctionvalue < 900)
             {
                 return 25;
             }
-            if (suctionvalue > 500)
+            if (suctionvalue > 500 && suctionvalue < 750)
             {
                 return 20;
             }
-            if (suctionvalue > 375)
+            if (suctionvalue > 375 && suctionvalue < 750)
             {
                 return 15;
             }
-            if (suctionvalue > 250)
+            if (suctionvalue > 250 && suctionvalue < 500)
             {
                 return 10;
             }
             return 10;
         }  
-
-        public override string ToString()
-        {
-            string result;
-            string ExHood = base.ToString();
-            result = ExHood;
-            result += "Type: " + Type + "\n";
-            result += "Støjniveau: " + Noicelevel +" dB\n";
-            result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
-            result += "Anbefalet max køkkenstørelse: " + KitchenSize + " m\u00B2\n";
-            result += "Filter: ";
-            if (Filter == false)
-            {
-                result += "Ja\n";
-            }
-            else
-            {
-                result += "Nej\n";
-            }
-            result += "Smiley: " + Smiley + "\n";
-
-            return result;
-        }
-
     }
 }
-
