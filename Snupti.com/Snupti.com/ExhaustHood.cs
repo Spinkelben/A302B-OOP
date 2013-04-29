@@ -10,13 +10,24 @@ namespace Snupti.com
     {
         //fri, væg, indbygget
         private string _type;
-        //kubic meter i timen
+        //kubikmeter i timen
         private int _suctionCapacity;
         // ja og nej
         private bool _filter;
+        //dB 0 til 140
         private int _noiceLevel;
+        //kvadratmeter
         private int _kitchenSize;
 
+        /// <summary>
+        /// Laver en ny instans af ExhaustHood
+        /// </summary>
+        /// <param name="name">Model navnet</param>
+        /// <param name="price">Pris på produktet</param>
+        /// <param name="type">Typer: Frithængt, Væghængt eller Indbygget</param>
+        /// <param name="suctionCapacity"></param>
+        /// <param name="filter"></param>
+        /// <param name="noiseLevel">Støjniveau i </param>
         public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
         {
             Name = name;
@@ -33,7 +44,7 @@ namespace Snupti.com
             Væghængt,
             Indbygget
         }
-
+        
         public bool Filter
         {
             get 
@@ -46,11 +57,14 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override SmileySystem Smiley
         {
             get
             {
-                return Filter ? SmileySystem.Sur : SmileySystem.Ligeglad;
+                return Filter ? SmileySystem.Ligeglad : SmileySystem.Sur;
             }
         }
 

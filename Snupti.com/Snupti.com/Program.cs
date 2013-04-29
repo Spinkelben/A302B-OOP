@@ -24,7 +24,6 @@ namespace Snupti.com
             ExhaustHood ExHood3 = new ExhaustHood("Hood4U", 3100, "Væghængt", 1450, true, 135);
 
 
-
             //Tilføjer varer til lagerlisten
             AllGoods.Add(Ventd1, 500);
             Console.WriteLine(AllGoods.GetStatus());
