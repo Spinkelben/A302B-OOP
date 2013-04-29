@@ -14,9 +14,9 @@ namespace Snupti.com
             Dimensions size = new Dimensions();
             Console.WriteLine(size);
             
-            VentedDryer Hej = new VentedDryer("Smiele",5000);
-            Hej.PowerConsumption = 0.645;
-            Hej.Capacity = 1;
+            VentedDryer Hej = new VentedDryer("Smiele",5000,5.67,5,new Dimensions(2345,23443,332),76,120,true);
+            
+            
            
             Console.WriteLine("Energi pr kg tøj {0}, Energi rating: {1}", Hej.GetEnergyRating(), Hej.RelativePowerConsumption());
             

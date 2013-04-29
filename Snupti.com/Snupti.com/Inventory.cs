@@ -8,14 +8,14 @@ namespace Snupti.com
 {
     class Inventory
     {
-        private List<Tuple<Item, int>> _stock = new List<Tuple<Item, int>>();
+        private List<InventoryEntry> _stock = new List<InventoryEntry>();
 
         public string GetStatus()
         {
             string result = "";
-            foreach (Tuple<Item, int> i in _stock)
+            foreach (InventoryEntry i in _stock)
             {
-                result += "Model: " + i.Item1.Name + " Antal: " + i.Item2 + "\n"; 
+                result += "Model: " + i.Item.Name + " Antal: " + i.Amount + "\n"; 
             }
             return result;
         }
@@ -27,7 +27,7 @@ namespace Snupti.com
         public void Add(Item item, int amount)
         {
             //Tjek om varen allerede findes i listen
-            var items = _stock.Where(s => s.Item1.Name == item.Name);
+            var items = _stock.Where(s => s.Item.Name == item.Name);
             if (items.Count() > 1)
             {
                 throw new Exception("Mere end en type vare med det modelnavn");
@@ -35,21 +35,69 @@ namespace Snupti.com
             //Tilføj varen
             if (items.Count() == 1)
             {
-                int indexOfItem;
-                Tuple<Item, int> temp;
-                Item tempItem = items.ElementAt(0).Item1;
-                int newAmount = items.ElementAt(0).Item2 + amount;
-                temp = new Tuple<Item, int>(tempItem, newAmount);
-                _stock.Add(temp);
-                indexOfItem = _stock.IndexOf(items.ElementAt(0));
-                _stock.RemoveAt(indexOfItem);
-                
+                items.ElementAt(0).Amount += amount;
+            }
+            else 
+            {
+                _stock.Add(new InventoryEntry(item, amount));
+            }
+        }
+
+        public void AddExisting(string name, int amount)
+        {
+            //Tjek om varen allerede findes i listen
+            var items = _stock.Where(s => s.Item.Name == name);
+            if (items.Count() > 1)
+            {
+                throw new Exception("Mere end en type vare med det modelnavn");
+            }
+            //Tilføj varen
+            if (items.Count() == 1)
+            {
+                items.ElementAt(0).Amount += amount;
+                //_stock.First(s => s.Item.Name == name).Amount += amount;                
             }
             else
             {
-                _stock.Add(new Tuple<Item,int>(item, amount));
+                throw new ArgumentException("string", "Der findes ikke en vare med det navn");
             }
            
+        }
+        public void Remove(Item item, int amount)
+        {
+            //Tjek om varen allerede findes i listen
+            var items = _stock.Where(s => s.Item.Name == item.Name);
+            if (items.Count() > 1)
+            {
+                throw new Exception("Mere end en type vare med det modelnavn");
+            }
+            //Tilføj varen
+            if (items.Count() == 1)
+            {
+                items.ElementAt(0).Amount -= amount;
+            }
+            else
+            {
+                throw new ArgumentException("item", "Varen findes ikke i systemet");
+            }
+        }
+        public void RemoveFromDatabase(Item item)
+        {
+            //Tjek om varen allerede findes i listen
+            var items = _stock.Where(s => s.Item.Name == item.Name);
+            if (items.Count() > 1)
+            {
+                throw new Exception("Mere end en type vare med det modelnavn");
+            }
+            //Tilføj varen
+            if (items.Count() == 1)
+            {
+                _stock.Remove(items.ElementAt(0));
+            }
+            else
+            {
+                throw new ArgumentException("item", "Varen findes ikke i systemet");
+            }
         }
     }
 }
