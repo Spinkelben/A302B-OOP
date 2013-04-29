@@ -10,10 +10,13 @@ namespace Snupti.com
     {
         private int _amount;
         private Item _item;
-
-        internal int Amount 
+        private int _lowStockThreshold;
+        /// <summary>
+        /// Antallet af den bestemte vare der er på lager.
+        /// </summary>
+        internal int Amount
         {
-            get 
+            get
             {
                 return _amount;
             }
@@ -29,7 +32,9 @@ namespace Snupti.com
                 }
             }
         }
-
+        /// <summary>
+        /// Den bestemte vare der er på denne plads i lageret.
+        /// </summary>
         internal Item Item
         {
             get
@@ -41,16 +46,52 @@ namespace Snupti.com
                 _item = value;
             }
         }
-
-        internal InventoryEntry(Item item) 
-            :this(item, 1)
+        /// <summary>
+        /// Grænseværdien for hvornår der skal gives advarsler om lav varebeholdning.
+        /// </summary>
+        internal int LowStockThreshold
+        {
+            get
+            {
+                return _lowStockThreshold;
+            }
+            set
+            {
+                _lowStockThreshold = value;
+            }
+        }
+        /// <summary>
+        /// Instantierer en ny indgang i lagerlisten. Lægger 1 vare ind med en lav-varebeholdnings
+        /// grænseværdi på 10.
+        /// </summary>
+        /// <param name="item">Varen der skal skrives på lagerlisten.</param>
+        internal InventoryEntry(Item item)
+            : this(item, 1, 10)
         {
             /*Empty*/
         }
+        /// <summary>
+        /// Instantier en ny indgang i lagerlisten. Sætter lav-varebeholdningsgrænseværdien til 10.
+        /// </summary>
+        /// <param name="item">Varen der skal skrives ind på lagerlisten.</param>
+        /// <param name="amount">Antallet af den bestemte vare der skal skrives ind på lagerlisten.</param>
         internal InventoryEntry(Item item, int amount)
+            : this(item, amount, 10)
+        {
+            /*Empty*/
+        }
+        /// <summary>
+        /// Instantierer en ny indgang i lagerlisten.
+        /// </summary>
+        /// <param name="item">Varen der skal skrives ind på lagerlisten.</param>
+        /// <param name="amount">Antallet af den bestemte vare der skal skrives ind på lagerlisten.</param>
+        /// <param name="lowStockThreshold">Grænseværdien for hvornår der skal gives advarsel
+        /// for lav varebeholdning.</param>
+        internal InventoryEntry(Item item, int amount, int lowStockThreshold)
         {
             Item = item;
             Amount = amount;
+            LowStockThreshold = lowStockThreshold;
         }
     }
 }
