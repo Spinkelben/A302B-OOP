@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BuildInOven.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="InventoryEntry.cs" />
     <Compile Include="MicrowaveOven.cs" />
     <Compile Include="VentLessDryer.cs" />
     <Compile Include="KitchenItem.cs" />
