@@ -8,13 +8,25 @@ namespace Snupti.com
 {
     class MicrowaveOven : ElectricalOven
     {
+        /// <summary>
+        /// Constructor med de to bools, hasGrill og hasConvection
+        /// </summary>
+        /// <param name="hasGrill">Hvorvidt mikroovnen har indbygget grill eller ej.</param>
+        /// <param name="hasConvection">Hvorvidt mikroovnen har varmluft eller ej.</param>
         public MicrowaveOven(bool hasGrill, bool hasConvection) : base()
         {
             _hasGrill = hasGrill;
             _hasConvection = hasConvection;
         }
 
+        /// <summary>
+        /// Har Grill ja/nej?
+        /// </summary>
         private bool _hasGrill;
+
+        /// <summary>
+        /// Property der holder styr på om ovnen har indbygget grill eller ej.
+        /// </summary>
         public bool HasGrill
         {
             get
@@ -23,7 +35,14 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Har Varmluft ja/nej?
+        /// </summary>
         private bool _hasConvection;
+
+        /// <summary>
+        /// Property der holder styr på om ovnen har varmluft eller ej.
+        /// </summary>
         public bool HasConvection
         {
             get
@@ -32,6 +51,9 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Implementation af SmileySystem.
+        /// </summary>
         public override SmileySystem Smiley
         {
             get

@@ -8,6 +8,11 @@ namespace Snupti.com
 {
     class BuildInOven : ElectricalOven
     {
+        /// <summary>
+        /// Constructor med en bool 'HasCleaningFunctionality' og en liste med tilbehør
+        /// </summary>
+        /// <param name="hasCleaningFunctionality">Hvorvidt indbygningsovnen har rensefunktion eller ej.</param>
+        /// <param name="accessories">Tilbehør</param>
         public BuildInOven(bool hasCleaningFunctionality, List<string> accessories)
             : base()
         {
@@ -15,12 +20,24 @@ namespace Snupti.com
             _accessories = accessories;
         }
 
+        /// <summary>
+        /// Laver et array af strings giver det til constructoren og udfylder tilbehørslisten med elementerne fra arrayet.
+        /// </summary>
+        /// <param name="hasCleaningFunctionality">Hvorvidt indbygningsovnen har rensefunktion eller ej.</param>
+        /// <param name="accessories">Tilbehør</param>
         public BuildInOven(bool hasCleaningFunctionality, string[] accessories)
            : this(hasCleaningFunctionality, new List<string>(accessories))
         {       
         }
 
+        /// <summary>
+        /// Liste med tilbehør.
+        /// </summary>
         private List<string> _accessories;
+
+        /// <summary>
+        /// Property der holder styr på tilbehør.
+        /// </summary>
         public List<string> Accessories
         {
             get
@@ -29,7 +46,14 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Har rensefunktion ja/nej?
+        /// </summary>
         private bool _hasCleaningFunctionality;
+        
+        /// <summary>
+        /// Property der holder styr på om ovnen har indbygget rensefunktion eller ej.
+        /// </summary>
         public bool HasCleaningFunctionality
         {
             get
@@ -38,6 +62,9 @@ namespace Snupti.com
             }
         }
 
+        /// <summary>
+        /// Implementation af SmileySystem.
+        /// </summary>
         public override SmileySystem Smiley
         {
             get
