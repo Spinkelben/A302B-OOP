@@ -167,7 +167,7 @@ namespace Snupti.com
             {
                 result += "Nej\n";
             }
-            result += "Smiley: " + KitchenSize + "\n";
+            result += "Smiley: " + Smiley + "\n";
 
             return result;
         }
