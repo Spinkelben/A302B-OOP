@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    class ExhaustHood : Item
+    class ExhaustHood : KitchenItem
     {
         //fri, væg, indbygget
         private string _type;
@@ -26,8 +26,8 @@ namespace Snupti.com
         /// <param name="price">Pris på produktet</param>
         /// <param name="type">Typer: Frithængt, Væghængt eller Indbygget</param>
         /// <param name="suctionCapacity"></param>
-        /// <param name="filter"></param>
-        /// <param name="noiseLevel">Støjniveau i </param>
+        /// <param name="filter">Ja eller Nej</param>
+        /// <param name="noiseLevel">Støjniveau i dB 0 til 140 </param>
         public ExhaustHood(string name, int price, string type, int suctionCapacity, bool filter, int noiseLevel)
         {
             Name = name;
@@ -117,12 +117,21 @@ namespace Snupti.com
             {
                 if (value > 0)
                     {
+                        _kitchenSize = GetKitchenSize(SuctionCapacity);
                         _suctionCapacity = value;
                     }
                 else
                 {
                     throw new System.ArgumentOutOfRangeException("SuctionCapacity", "Suctioncapacity kan ikke være negativ");
                 }
+            }
+        }
+
+        public int KitchenSize
+        {
+            get
+            {
+                return _kitchenSize;
             }
         }
 
@@ -153,6 +162,30 @@ namespace Snupti.com
                 return 10;
             }
             return 10;
-        }  
+        }
+
+        public override string ToString()
+        {
+            string result;
+            string itemString = base.ToString();
+            result = itemString;
+            result += "Type: " + Type + "\n";
+            result += "Støjniveau: " + Noicelevel + " dB\n";
+            result += "Sugekapacitet: " + SuctionCapacity + " m\u00B3/t\n";
+            result += "Anbefalet max køkkenstørelse: " + KitchenSize + " m\u00B2\n";
+            result += "Filter: ";
+            if (Filter == false)
+            {
+                result += "Ja\n";
+            }
+            else
+            {
+                result += "Nej\n";
+            }
+            result += "Smiley: " + KitchenSize + "\n";
+
+            return result;
+        }
     }
 }
+
