@@ -119,6 +119,11 @@ namespace Snupti.com
                 }
             }
         }
+
+        protected Dryer(string name, decimal price) : base(name, price)
+        {
+        }
+
         /// <summary>
         /// Returnerer det relative strømforbrug E, som bruges i energiklasseberegningerne.
         /// </summary>

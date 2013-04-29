@@ -9,6 +9,10 @@ namespace Snupti.com
     abstract class KitchenItem : Item
     {
 
+        protected KitchenItem(string name, decimal price) : base(name, price)
+        {
+        }
+
         /// <summary>
         /// Enum med de tre smileys - Sur, Ligeglad & Glad.
         /// </summary>

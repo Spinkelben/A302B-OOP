@@ -201,5 +201,15 @@ namespace Snupti.com
                 throw new ArgumentException("item", "Varen findes ikke i systemet");
             }
         }
+
+        //public  SortedForPrice<>() where T : IEnumerable<T>
+
+        public List<InventoryEntry> SortedForPrice() 
+        {
+            List<InventoryEntry> SortedList = new List<InventoryEntry>();
+            IEnumerable<InventoryEntry> items = SortedList.Where(p => p.Item.Name == "streng");
+
+            return SortedList;
+        }
     }
 }

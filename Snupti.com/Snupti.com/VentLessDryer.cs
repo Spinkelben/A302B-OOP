@@ -39,7 +39,7 @@ namespace Snupti.com
         /// </summary>
         /// <param name="name">Modelnavn.</param>
         /// <param name="price">Pris i kr.</param>
-        public VentLessDryer(string name, int price)
+        public VentLessDryer(string name, decimal price)
             : this(name, price, 1.0, 1, new Dimensions(), 1, 1, true)
         {
             /*Empty*/
@@ -55,7 +55,7 @@ namespace Snupti.com
         /// <param name="noiseLevel">Støjniveau i dB.</param>
         /// <param name="dryingTime">Tørretid i minutter.</param>
         /// <param name="heatPump">Hvorvidt tørretumbleren har en varmepumpe.</param>
-        public VentLessDryer(string name, int price, double powerConsumption, int capacity, Dimensions size,
+        public VentLessDryer(string name, decimal price, double powerConsumption, int capacity, Dimensions size,
             int noiseLevel, int dryingTime, bool heatPump) : this(name, price, powerConsumption, capacity, size.Length,
             size.Width, size.Height, noiseLevel, dryingTime, heatPump)
         {
@@ -74,11 +74,9 @@ namespace Snupti.com
         /// <param name="noiseLevel">Støjniveau i dB.</param>
         /// <param name="dryingTime">Tørretid i minutter.</param>
         /// <param name="heatPump">Hvorvidt tørretumbleren har en varmepumpe.</param>
-        public VentLessDryer(string name, int price, double powerConsumption, int capacity, int length,
-            int width, int height , int noiseLevel, int dryingTime, bool heatPump)
+        public VentLessDryer(string name, decimal price, double powerConsumption, int capacity, int length,
+            int width, int height , int noiseLevel, int dryingTime, bool heatPump) : base(name, price)
         {
-            Name = name;
-            Price = price;
             PowerConsumption = powerConsumption;
             Capacity = capacity;
             Dimensions size = new Dimensions(length, width, height);
