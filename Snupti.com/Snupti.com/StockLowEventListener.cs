@@ -31,7 +31,7 @@ namespace Snupti.com
             if (e.GetType() == typeof(OnLowStockEventArgs))
             {
                 OnLowStockEventArgs ActualE = (OnLowStockEventArgs)e;
-                Console.WriteLine("WARNING low stock on " + ActualE.Name + ". Only " + ActualE.LeftInStock + " left.");
+                Console.WriteLine("ADVARSEL lav varebehold af " + ActualE.Name + ". Kun " + ActualE.LeftInStock + " tilbage.");
             }
         }
         /// <summary>
