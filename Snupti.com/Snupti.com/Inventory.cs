@@ -43,6 +43,7 @@ namespace Snupti.com
                 _stock.Add(temp);
                 indexOfItem = _stock.IndexOf(items.ElementAt(0));
                 _stock.RemoveAt(indexOfItem);
+                
             }
             else
             {
