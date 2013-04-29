@@ -17,6 +17,23 @@ namespace Snupti.com
         /// </summary>
         private static Inventory instance;
         /// <summary>
+        /// Delegate type til at forbinde StockLow notifikationer.
+        /// </summary>
+        /// <param name="sender">Obketet der triggerede eventet.</param>
+        /// <param name="e">Event parametre.</param>
+        public delegate void StockLowHandler(object sender, EventArgs e);
+        /// <summary>
+        /// En event clienter kan bruge til at blive notificeret når varebeholdningen bliver lav.
+        /// </summary>
+        public event StockLowHandler StockLow;
+        protected virtual void OnLowStock(EventArgs e) 
+        {
+            if (StockLow != null)
+            {
+                StockLow(this, e);
+            }
+        }
+        /// <summary>
         /// Privat constructor.
         /// </summary>
         private Inventory()
@@ -55,7 +72,16 @@ namespace Snupti.com
         /// <param name="item">Varen der skal tilføjes til listen</param>
         public void Add(Item item)
         {
-            this.Add(item, 1);
+            this.Add(item, 1, 10);
+        }
+        /// <summary>
+        /// Tilføj et antal af en bestemt vare til lagerlisten. Den sætter den standard threshold.
+        /// </summary>
+        /// <param name="item">Den bestemte vare der tilføjes.</param>
+        /// <param name="amount">Antallet af varer der skal tilføjes.</param>
+        public void Add(Item item, int amount)
+        {
+            this.Add(item, amount, 10);
         }
         /// <summary>
         /// Tilføj et antal varer til lagerlisten. Hvis varen findes i forvejen opdateres antallet i beholdningen.
@@ -63,7 +89,7 @@ namespace Snupti.com
         /// <param name="item">Varen der skal tilføjes</param>
         /// <param name="amount">Antallet af varer der skal tilføjes</param>
         /// <exception cref="Exeption">Hvis der findes mere end en vare med det navn</exception>
-        public void Add(Item item, int amount)
+        public void Add(Item item, int amount, int lowStockThreshold)
         {
             //Tjek om varen allerede findes i listen
             var items = _stock.Where(s => s.Item.Name == item.Name);
@@ -78,7 +104,7 @@ namespace Snupti.com
             }
             else 
             {
-                _stock.Add(new InventoryEntry(item, amount));
+                _stock.Add(new InventoryEntry(item, amount, lowStockThreshold));
             }
         }
         /// <summary>
@@ -134,10 +160,15 @@ namespace Snupti.com
             {
                 throw new Exception("Mere end en type vare med det modelnavn");
             }
-            //Tilføj varen
+            //Fjerner varen
             if (items.Count() == 1)
             {
                 items.ElementAt(0).Amount -= amount;
+                if (items.ElementAt(0).Amount < items.ElementAt(0).LowStockThreshold)
+                {
+                    EventArgs e = new OnLowStockEventArgs(items.ElementAt(0).Amount, items.ElementAt(0).Item.Name);
+                    OnLowStock(e);
+                }
             }
             else
             {

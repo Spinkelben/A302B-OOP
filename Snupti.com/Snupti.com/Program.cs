@@ -14,7 +14,9 @@ namespace Snupti.com
 
             //Instantier lagerlisten 
             Inventory AllGoods = Inventory.GetInstance();
-            
+            //Linker Observeren
+            StockLowEventListener SLEL = new StockLowEventListener(AllGoods);
+
             //Skaber varer
             
             VentedDryer Ventd1 = new VentedDryer("Smiele supertørrer 3000",5000,5.67,5,new Dimensions(2345,23443,332),76,120,true);
@@ -48,6 +50,8 @@ namespace Snupti.com
             Console.WriteLine(AllGoods.GetStatus());
             Console.ReadLine();
 
+            //Afmelder observeren
+            SLEL.Detach();
         }
     }
 }

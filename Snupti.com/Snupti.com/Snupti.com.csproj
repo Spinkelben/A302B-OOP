@@ -45,6 +45,8 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryEntry.cs" />
     <Compile Include="MicrowaveOven.cs" />
+    <Compile Include="OnLowStockEventArgs.cs" />
+    <Compile Include="StockLowEventListener.cs" />
     <Compile Include="VentLessDryer.cs" />
     <Compile Include="KitchenItem.cs" />
     <Compile Include="EnergyRating.cs" />
