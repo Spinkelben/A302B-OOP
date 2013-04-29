@@ -45,5 +45,19 @@ namespace Snupti.com
                 return HasCleaningFunctionality ? SmileySystem.Glad : SmileySystem.Ligeglad;
             }
         }
+
+        public override string ToString()
+        {
+            string result;
+            string ovenSpecs = base.ToString();
+            result = ovenSpecs;
+            result += "Type: Indbygningsovn\n";
+            result += "Energiklasse: " + GetEnergyRating() + "\n";
+            result += "Har rensefunktion: " + HasCleaningFunctionality.ToString();
+            result += "Tilbehør: " + Accessories.ToString();
+            result += "SmileyRating: " + Smiley.ToString();
+
+            return result;
+        }
     }
 }

@@ -90,9 +90,9 @@ namespace Snupti.com
         }
 
         /// <summary>
-        /// Ikke færdig - ændres muligvis
+        /// Udregning af energiklasse
         /// </summary>
-        /// <returns></returns>
+        /// <returns>EnergyRating</returns>
         public EnergyRating GetEnergyRating()
         {
             if (PowerConsumption < 0.6)
@@ -219,6 +219,22 @@ namespace Snupti.com
             {
                 return EnergyRating.G;
             }
+        }
+
+        /// <summary>
+        /// Udprinting af information om modellerne
+        /// </summary>
+        /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
+        public override string ToString()
+        {
+            string result;
+            string itemString = base.ToString();
+            result = itemString;
+            result += "Strømforbrug: " + PowerConsumption + " kWh\n";
+            result += "Volumen: " + Volume + " L\n";
+            result += "Dimentioner, i mm, B: " + Size.Width + " L: " + Size.Length + " H: " + Size.Height + "\n";
+           
+            return result;
         }
     }
 
