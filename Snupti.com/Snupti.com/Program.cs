@@ -33,12 +33,17 @@ namespace Snupti.com
             BuildInOven Oven1 = new BuildInOven("Heat Box", 5999.95m, 2000, new Dimensions(1200, 1500, 1800), 50, false, new string[] { "Bradepande", "Grillhandsker" });
             BuildInOven Oven2 = new BuildInOven("Hunk of steel", 4999.95m, 1200, new Dimensions(1250, 1450, 1950), 200, true, new List<string>() { "Stegetermometer", "1/2 gris", "1 års forbrug af ovnrens" });
 
+            Console.WriteLine("Test af ToString metoder på Varer");
             Console.WriteLine(ExHood1.ToString());
             Console.WriteLine(ExHood2.ToString());
             Console.WriteLine(ExHood3.ToString());
             Console.WriteLine(Micro4.ToString());
+            Console.WriteLine(Ventd1.ToString());
+            Console.WriteLine(VentL1.ToString());
+            Console.WriteLine(Oven2.ToString());
 
             //Tilføjer varer til lagerlisten
+            Console.WriteLine("\nTest af tilføjelse og fjernelse af varer fra lagerlisten inklusive event triggering");
             AllGoods.Add(Micro1, 20, 5);
             AllGoods.Add(Micro2, 50, 8);
             AllGoods.Add(Micro3, 100, 10);
@@ -48,6 +53,9 @@ namespace Snupti.com
             AllGoods.Add(Ventd1, 500);
             Console.WriteLine(AllGoods.GetStatus());
             AllGoods.Add(Ventd1, 200);
+            AllGoods.Remove(Micro2, 42);
+            AllGoods.Remove(Micro1, 16);
+            AllGoods.Remove(Oven2, 33);
             Console.WriteLine(AllGoods.GetStatus());
             AllGoods.Add(Ventd2, 150);
             AllGoods.Add(VentL1, 350);
@@ -60,12 +68,54 @@ namespace Snupti.com
             Console.WriteLine(AllGoods.GetStatus());
             AllGoods.RemoveFromDatabase(Ventd1);
             Console.WriteLine(AllGoods.GetStatus());
-            //Test af iteratoren
-            foreach (InventoryEntry IE in AllGoods.HighToLow)
+
+            //Find varer hvis navn matcher streng
+            Console.WriteLine("\nFinder varer hvis navn mather en tekststreng: Cook\n");
+            List<InventoryEntry> result = AllGoods.SearchForName("Cook");
+            foreach (InventoryEntry i in result)
             {
-                Console.WriteLine(IE.ToString());
+                Console.WriteLine(i.Item.ToString());
             }
 
+            //Find alle varer mellem en minimum og maksimum pris
+            Console.WriteLine("\nFinder varer som ligger i pris intervallet 4000-4500 kr.\n");
+            Range<Decimal> prisInterval = new Range<decimal>(4000, 4500);
+            result = AllGoods.SearchForPrice(prisInterval);
+            foreach (InventoryEntry i in result)
+            {
+                Console.WriteLine(i.Item.ToString());
+            }
+
+            //Find alle tørretumblere med et angivet energimærke
+            Console.WriteLine("\nFinder tørretumblere i energiklasse G\n");
+            result = AllGoods.SearchForEnergyRating(EnergyRating.G);
+            foreach (InventoryEntry i in result)
+            {
+                Console.WriteLine(i.Item.ToString());
+            }
+
+            //Find alle varer der har en bestemt smiley
+            Console.WriteLine("\nFinder alle varer med en glad smiley");
+            result = AllGoods.SearchForSmiley(KitchenItem.SmileySystem.Glad);
+            foreach (InventoryEntry i in result)
+            {
+                Console.WriteLine(i.Item.ToString());
+            }
+
+            //Sorter Listen efter pris
+            AllGoods.SortInventoryByPrice();
+            //Iterer fra lav til høj
+            Console.WriteLine("\nTest af iterering fra lav til høj pris");
+            foreach (InventoryEntry IE in AllGoods.LowToHigh)
+            {
+                Console.WriteLine("Vare navn:" + IE.Item.Name + " Pris: " + IE.Item.Price);
+            }
+            Console.WriteLine("\nTest af iterering fra høj til lav pris");
+            foreach (InventoryEntry IE in AllGoods.HighToLow)
+            {
+                Console.WriteLine("Vare navn:" + IE.Item.Name + " Pris: " + IE.Item.Price);
+            }
+            
             Console.ReadLine();
 
             //Afmelder observeren

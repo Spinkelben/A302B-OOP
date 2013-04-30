@@ -207,24 +207,22 @@ namespace Snupti.com
         /// </summary>
         /// <param name="name">Navn</param>
         /// <returns>foundItems</returns>
-        public List<Item> SearchForName(string name)
+        public List<InventoryEntry> SearchForName(string name)
         {
-            List<Item> foundItems = new List<Item>();
-            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item.Name == name))
-            {
-                foundItems.Add(inv.Item);
-            }
-            return foundItems;
+            IEnumerable<InventoryEntry> foundItems = new List<InventoryEntry>();
+            foundItems = _stock.Where(invEntry => invEntry.Item.Name.Contains(name));
+
+            return foundItems.ToList<InventoryEntry>();
         }
 
         /// <summary>
         /// Returner en liste af produkter der ligger i mellem to givede værdier, som bliver sendt med.
         /// </summary>
-        public List<InventoryEntry> SortedForPrice(Range<decimal> range) 
+        public List<InventoryEntry> SearchForPrice(Range<decimal> range) 
         {
-            List<InventoryEntry> PriceSortedList = new List<InventoryEntry>();
-            IEnumerable<InventoryEntry> items = PriceSortedList.Where(p => range.Contains(p.Item.Price));
-            return PriceSortedList;
+            List<InventoryEntry> result = new List<InventoryEntry>();
+            IEnumerable<InventoryEntry> temp = _stock.Where(p => range.Contains(p.Item.Price));
+            return result = temp.ToList<InventoryEntry>();
         }
 
         /// <summary>
@@ -232,13 +230,11 @@ namespace Snupti.com
         /// </summary>
         /// <param name="rating">Energiklasse</param>
         /// <returns>foundItems</returns>
-        public List<Item> SearchForEnergyRating(EnergyRating rating)
+        public List<InventoryEntry> SearchForEnergyRating(EnergyRating rating)
         {
-            List<Item> foundItems = new List<Item>();
-            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item is Dryer && ((Dryer)(invEntry.Item)).GetEnergyRating() == rating))
-            {
-                foundItems.Add(inv.Item);
-            }
+            List<InventoryEntry> foundItems = new List<InventoryEntry>();
+            IEnumerable<InventoryEntry> temp = _stock.Where(invEntry => invEntry.Item is Dryer && ((Dryer)(invEntry.Item)).GetEnergyRating() == rating);
+            foundItems = temp.ToList<InventoryEntry>();
             return foundItems;
         }
 
@@ -247,13 +243,11 @@ namespace Snupti.com
         /// </summary>
         /// <param name="smiley">Smileyordning</param>
         /// <returns>foundItems</returns>
-        public List<Item> SearchForSmiley(KitchenItem.SmileySystem smiley)
+        public List<InventoryEntry> SearchForSmiley(KitchenItem.SmileySystem smiley)
         {
-            List<Item> foundItems = new List<Item>();
-            foreach (InventoryEntry inv in _stock.Where(invEntry => invEntry.Item is KitchenItem && ((KitchenItem)(invEntry.Item)).Smiley == smiley))
-            {
-                foundItems.Add(inv.Item);
-            }
+            List<InventoryEntry> foundItems = new List<InventoryEntry>();
+            IEnumerable<InventoryEntry> temp = _stock.Where(invEntry => invEntry.Item is KitchenItem && ((KitchenItem)(invEntry.Item)).Smiley == smiley);
+            foundItems = temp.ToList<InventoryEntry>();
             return foundItems;
         }
 
@@ -299,6 +293,13 @@ namespace Snupti.com
                     yield return _stock[i];
                 }
             }
+        }
+        /// <summary>
+        /// Sorter lagerlisten efter pris.
+        /// </summary>
+        public void SortInventoryByPrice()
+        {
+            _stock.Sort(); 
         }
 
     }

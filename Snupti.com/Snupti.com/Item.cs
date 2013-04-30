@@ -79,7 +79,8 @@ namespace Snupti.com
         /// <returns>Information om modellen i strengformat. Et felt pr. linje.</returns>
         public override string ToString()
         {
-            string result = "Model: " + Name + "\n";
+            string result = "#################\n";
+            result += "Model: " + Name + "\n";
             result += "Pris: " + Price + " kr.\n";
             return result;
         }

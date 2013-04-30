@@ -78,8 +78,8 @@ namespace Snupti.com
             result = ovenSpecs;
             result += "Type: Mikroovn\n";
             result += "Energiklasse: " + GetEnergyRating() + "\n";
-            result += "Har varmluft: " + HasConvection.ToString();
-            result += "Har Grill: " + HasGrill.ToString();
+            result += "Har varmluft: " + HasConvection.ToString() + "\n";
+            result += "Har Grill: " + HasGrill.ToString() + "\n";
             result += "SmileyRating: " + Smiley.ToString();
     
             return result;

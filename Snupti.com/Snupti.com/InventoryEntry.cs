@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snupti.com
 {
-    internal class InventoryEntry
+    internal class InventoryEntry : IComparable
     {
         private int _amount;
         private Item _item;
@@ -92,6 +92,24 @@ namespace Snupti.com
             Item = item;
             Amount = amount;
             LowStockThreshold = lowStockThreshold;
+        }
+
+        int System.IComparable.CompareTo(object obj)
+        {
+            if (obj == null)
+            {
+                return 1;
+            }
+            InventoryEntry otherEntry = obj as InventoryEntry;
+            if (otherEntry != null)
+            {
+                return this.Item.Price.CompareTo(otherEntry.Item.Price);
+            }
+            else
+            {
+                throw new ArgumentException("object", "Objektet er ikke en Inventory item");
+            }
+
         }
 
         public override string ToString()

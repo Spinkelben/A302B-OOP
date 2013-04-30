@@ -98,8 +98,8 @@ namespace Snupti.com
             result = ovenSpecs;
             result += "Type: Indbygningsovn\n";
             result += "Energiklasse: " + GetEnergyRating() + "\n";
-            result += "Har rensefunktion: " + HasCleaningFunctionality.ToString();
-            result += "Tilbehør: " + Accessories.ToString();
+            result += "Har rensefunktion: " + HasCleaningFunctionality.ToString() + "\n";
+            result += "Tilbehør: " + string.Join(", ",Accessories.ToArray()) + "\n";
             result += "SmileyRating: " + Smiley.ToString();
 
             return result;
