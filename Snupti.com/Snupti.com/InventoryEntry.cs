@@ -93,7 +93,11 @@ namespace Snupti.com
             Amount = amount;
             LowStockThreshold = lowStockThreshold;
         }
-
+        /// <summary>
+        /// Sammenligner to varer på pris
+        /// </summary>
+        /// <param name="obj">varen som denne instans skal sammenlignes med</param>
+        /// <returns>int der angiver rækkefølgen af de to elementer</returns>
         int System.IComparable.CompareTo(object obj)
         {
             if (obj == null)

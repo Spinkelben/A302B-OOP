@@ -22,24 +22,27 @@
 \section{Løsningsbeskrivelse og kommentarer hertil}
 \begin{enumerate}
 	\item[] \textbf{Status af programmet:}
-	Programmet lever op til de krav der er opstillet i opgaveformuleringen, og 
+	Programmet lever op til de krav der er opstillet i opgaveformuleringen. Med hensyn til input validering foretager vi yderligere inputvalidering på de properies hvor det tydeligvis 
 	\item[] \textbf{Program.cs:}
-	Vi har i program klassen hardcodet eksempler der demonstrere vores program. Når programmet eksekveres startes en masse kommandoer, der afvikler forskellige elementer af programmet. Programmet skriver ud hvilke dele af programmet der bliver afviklet, sammen med resultaterne. 
+	Program.cs er enkonsolapplikation der med hardcodet eksempler demonstrere alle programmets funktioner. Når programmet eksekveres startes en masse kommandoer, der afvikler forskellige elementer af programmet. Programmet skriver løbende ud hvilke dele af programmet der bliver afviklet, sammen med resultaterne. 
+			
+	\item[] \textbf{KitchenItem:} Klassen \mono{KitchenItem}, som alle køkken produkter arver fra, har implementeret Smileysystemset.
 		
+	\item[] \textbf{Dimensions} \mono{Dimensions} er en indpakningsklasse der indeholder tre dimensioner, længde bredde og højde. De objekter der har en længde, bredde og højde, har en instans af denne klasse, med de tre variabler, istedet for tre løse variabler.  
 	
-	\item[] \textbf{KitchenItem:} Klassen KitchenItem, som alle køkken produkter arver fra, har implementeret Smileysystemset.
+	\item[] \textbf{EnergyRating} \mono{EnergyRating} definerer et interface som de klasser der, har en energiklasse, implementer. Desuden er der en enum med energiklasserne. 	
 	
+	\item[] \textbf{Inventory} \mono{Inventory} klassen er en klasse der indkapsler lagerlisten. Inventory tilbyder en række metoder til at tilføje og fjerne elementer fra listen. Det er en singleton, så der kan kun instantieres en lagerliste. Desuden implementerer klassen en metode til at få en opgørelse af lageret. Klassen implemnterer også en event der bliver raised når lagerbeholdningen for en bestemt vare når under en angiven værdi. Det er også Inventory klassen der tilbyder de fire søgefunktioner, på pris, energiklasse, navn og smiley. Inventory tilbyder to iteratorer til at itere gennem lagerlisten. Den ene operator starter fra index 0 og går op, den anden starter fra det højeste index og går ned. Inventory tilbyder en sort funktion til at sortere elementerne i lagerlisten efter pris.
+	
+	\item[] \textbf{InventoryEntry} \mono{InventoryEntry} indkaplser de informationer den enkelte indgang i lagerlisten skal indeholde. Den indeholder varen, antallet af den vare der er på lager, og grænseværdier for hvornår der skal raises en lav-varebeholdningsadvarsel. InventoryItem implementerer interfacet IComparable, som sammenligner prisen på de forskellige varer.
+	
+	\item[] \textbf{OnStockLowEventArgs} \mono{OnStockLowEventArgs} nedarver fra EventArgs. Klassen indeholder de event parametre som sendes med, hver gang der raises en OnStockLow event.
 	
 	\item[] \textbf{Range:}
-	 Range har vi valgt at implementere som en generiskklasse. Vi bruger denne klasse to steder; Til at se om støjniveauet er i mellem 0 og 140, og til at vise hvilke produkter der ligger imellem to pris niveauer. Klassen har en IsBetween metode som kan blive kaldt for at se om en given værdi ligger imellem minimum og maximum værdierne.
+	 \mono{Range} har vi valgt at implementere som en generiskklasse. Vi bruger denne klasse to steder; Til at se om støjniveauet er i mellem 0 og 140, og til at vise hvilke produkter der ligger imellem to pris niveauer. Klassen har en IsBetween metode som kan blive kaldt for at se om en given værdi ligger imellem minimum og maximum værdierne.
 	 
+	 \item[] \textbf{StockLowEventListener} \mono{StockLowEventListener} er den en observer klasse der lytter på om der bliver raised et event fra client. Den har tre metoder, en til at tilføje subscriptions, en til at fjerne subsciptions og en metode der bliver kaldt når pubisher trigger en event.
 	 
-	 
-
-	
-	\item[] \textbf{Stock:} Indkapslingen af alle \mono{Item}s sker i en \mono{Stock}(lager). Lageret indeholder en dictionary, hvor \mono{Key} er varen, og \mono{Value} er antallet af denne vare i lageret. Udover de i opgavebeskrivelsen beskrevede metoder (\mono{add} og \mono{remove}) findes her også de fire søgefunktioner. Til sidst er der de to interatorer, som søger forlæns og baglæns sorteret efter pris. Der er eksempler på både basale lageroperationer, søgefunktionerne og iteratorerne i \mono{program.cs}
-	
-	\item[] \textbf{Opslag i tabeller:} Når der skal findes energiklasser, skal der slås op i tabellerne, som findes i opgavebeskrivelsen. Disse tabeller er implementeret som simple lister af \mono{doubles}, som der søges i. Se mere i \mono{Thresholds.cs}. For emhættens ``anbefalet max køkkenstørrelse'' ledes listen igennem bagfra, og kun første værdi benyttes (da det er den egentlige vigtige værdi).
 \end{enumerate}
 
 \section{Andre kilder benyttet}
