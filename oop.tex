@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage[a4paper,inner=2cm,outer=2cm,top=2cm,bottom=2cm,pdftex]{geometry}
+\graphicspath{{images/}}
+\newcommand{\mono}{\texttt}
+
+\begin{document}
+
+\title{OOP Eksamensopgave}
+\author{\bf{Gruppe A302 B}\\Emil Alexander Lousdahl Nesgaard\\Søren Bøtker Ranneries\\Kenneth Haunstrup Christensen}
+\date{30. april, 2013}
+\maketitle
+
+\section{Oversigt (UML)}
+\includegraphics[width=\textwidth]{klassediagram}
+
+\section{Løsningsbeskrivelse og kommentarer hertil}
+\begin{enumerate}
+	\item[] \textbf{Status af programmet:}
+	Programmet lever op til de krav der er opstillet i opgaveformuleringen, og 
+	\item[] \textbf{Program.cs:}
+	Vi har i program klassen hardcodet eksempler der demonstrere vores program. Når programmet eksekveres startes en masse kommandoer, der afvikler forskellige elementer af programmet. Programmet skriver ud hvilke dele af programmet der bliver afviklet, sammen med resultaterne. 
+		
+	
+	\item[] \textbf{KitchenItem:} Klassen KitchenItem, som alle køkken produkter arver fra, har implementeret Smileysystemset.
+	
+	
+	\item[] \textbf{Range:}
+	 Range har vi valgt at implementere som en generiskklasse. Vi bruger denne klasse to steder; Til at se om støjniveauet er i mellem 0 og 140, og til at vise hvilke produkter der ligger imellem to pris niveauer. Klassen har en IsBetween metode som kan blive kaldt for at se om en given værdi ligger imellem minimum og maximum værdierne.
+	 
+	 
+	 
+
+	
+	\item[] \textbf{Stock:} Indkapslingen af alle \mono{Item}s sker i en \mono{Stock}(lager). Lageret indeholder en dictionary, hvor \mono{Key} er varen, og \mono{Value} er antallet af denne vare i lageret. Udover de i opgavebeskrivelsen beskrevede metoder (\mono{add} og \mono{remove}) findes her også de fire søgefunktioner. Til sidst er der de to interatorer, som søger forlæns og baglæns sorteret efter pris. Der er eksempler på både basale lageroperationer, søgefunktionerne og iteratorerne i \mono{program.cs}
+	
+	\item[] \textbf{Opslag i tabeller:} Når der skal findes energiklasser, skal der slås op i tabellerne, som findes i opgavebeskrivelsen. Disse tabeller er implementeret som simple lister af \mono{doubles}, som der søges i. Se mere i \mono{Thresholds.cs}. For emhættens ``anbefalet max køkkenstørrelse'' ledes listen igennem bagfra, og kun første værdi benyttes (da det er den egentlige vigtige værdi).
+\end{enumerate}
+
+\section{Andre kilder benyttet}
+\begin{enumerate}
+	\item[] -- Microsoft Developer Network (MSDN)
+\end{enumerate}
+
+\section{Underskrifter}
+\vspace{2cm}
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+Emil Alexander Lousdahl Nesgaard\\\\
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+Søren Bøtker Ranneries\\\\
+\rule{9cm}{1pt}\\
+\vspace{1.5cm}
+Kenneth Haunstrup Christensen\\\\
+
+\end{document}
